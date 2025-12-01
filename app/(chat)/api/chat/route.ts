@@ -22,10 +22,8 @@ import { entitlementsByUserType } from "@/lib/ai/entitlements";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
-import { createDocument } from "@/lib/ai/tools/create-document";
-import { getWeather } from "@/lib/ai/tools/get-weather";
-import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
-import { updateDocument } from "@/lib/ai/tools/update-document";
+import { queryData, getContext } from "@/lib/ai/tools/query-data";
+import { queryDataTool } from "@/lib/ai/tools/definitions";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -181,27 +179,20 @@ export async function POST(request: Request) {
       execute: ({ writer: dataStream }) => {
         const result = streamText({
           model: myProvider.languageModel(selectedChatModel),
-          system: systemPrompt({ selectedChatModel, requestHints }),
+          system: systemPrompt({ 
+            selectedChatModel, 
+            requestHints,
+            databaseContext: getContext()
+          }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
           experimental_activeTools:
             selectedChatModel === "chat-model-reasoning"
               ? []
-              : [
-                  "getWeather",
-                  "createDocument",
-                  "updateDocument",
-                  "requestSuggestions",
-                ],
+              : ["queryData"],
           experimental_transform: smoothStream({ chunking: "word" }),
           tools: {
-            getWeather,
-            createDocument: createDocument({ session, dataStream }),
-            updateDocument: updateDocument({ session, dataStream }),
-            requestSuggestions: requestSuggestions({
-              session,
-              dataStream,
-            }),
+            queryData: queryDataTool
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,

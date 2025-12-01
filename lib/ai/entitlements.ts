@@ -8,22 +8,18 @@ type Entitlements = {
 
 export const entitlementsByUserType: Record<UserType, Entitlements> = {
   /*
-   * For users without an account
+   * For users without an account - unlimited for internal HMIS use
    */
   guest: {
-    maxMessagesPerDay: 20,
+    maxMessagesPerDay: 999999,
     availableChatModelIds: ["chat-model", "chat-model-reasoning"],
   },
 
   /*
-   * For users with an account
+   * For users with an account - unlimited for internal HMIS use
    */
   regular: {
-    maxMessagesPerDay: 100,
+    maxMessagesPerDay: 999999,
     availableChatModelIds: ["chat-model", "chat-model-reasoning"],
   },
-
-  /*
-   * TODO: For users with an account and a paid membership
-   */
 };
