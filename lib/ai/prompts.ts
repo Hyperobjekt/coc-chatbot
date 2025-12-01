@@ -123,3 +123,9 @@ export const titlePrompt = `\n
     - ensure it is not more than 80 characters long
     - the title should be a summary of the user's message
     - do not use quotes or colons`;
+
+// Stub prompts for artifacts (not currently used)
+export const codePrompt = "Create code based on the user's request";
+export const sheetPrompt = "Create a spreadsheet based on the user's request";
+export const updateDocumentPrompt = (content: string, type: string) => 
+  `Update the ${type} document based on the user's request. Current content: ${content}`;

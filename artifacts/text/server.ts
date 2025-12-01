@@ -39,7 +39,7 @@ export const textDocumentHandler = createDocumentHandler<"text">({
 
     const { fullStream } = streamText({
       model: myProvider.languageModel("artifact-model"),
-      system: updateDocumentPrompt(document.content, "text"),
+      system: updateDocumentPrompt(document.content || "", "text"),
       experimental_transform: smoothStream({ chunking: "word" }),
       prompt: description,
       providerOptions: {
