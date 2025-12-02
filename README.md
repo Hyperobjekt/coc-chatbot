@@ -1,71 +1,175 @@
-<a href="https://chat.vercel.ai/">
-  <img alt="Next.js 14 and App Router-ready AI chatbot." src="app/(chat)/opengraph-image.png">
-  <h1 align="center">Chat SDK</h1>
-</a>
+# HMIS AI Chatbot
+
+An AI-powered chatbot for querying Homeless Management Information System (HMIS) data using natural language. Built with Next.js and AI SDK, this application allows users to analyze homeless services data through conversational interactions.
 
 <p align="center">
-    Chat SDK is a free, open-source template built with Next.js and the AI SDK that helps you quickly build powerful chatbot applications.
+  <img alt="HMIS AI Chatbot Interface" src="app/(chat)/opengraph-image.png">
 </p>
 
-<p align="center">
-  <a href="https://chat-sdk.dev"><strong>Read Docs</strong></a> ·
-  <a href="#features"><strong>Features</strong></a> ·
-  <a href="#model-providers"><strong>Model Providers</strong></a> ·
-  <a href="#deploy-your-own"><strong>Deploy Your Own</strong></a> ·
-  <a href="#running-locally"><strong>Running locally</strong></a>
-</p>
-<br/>
+## Overview
+
+This chatbot provides natural language access to HMIS data following HUD Data Standards, enabling users to:
+- Query client demographics and outcomes
+- Analyze project performance metrics
+- Track services and financial assistance
+- Generate insights about homeless services
+
+Currently tracking:
+- 4,146 clients
+- 27 projects
+- 4,771 enrollments
+- 4,295 exits
+- 4,472 services
+- 9,623 income/benefits records
 
 ## Features
 
-- [Next.js](https://nextjs.org) App Router
-  - Advanced routing for seamless navigation and performance
-  - React Server Components (RSCs) and Server Actions for server-side rendering and increased performance
-- [AI SDK](https://ai-sdk.dev/docs/introduction)
-  - Unified API for generating text, structured objects, and tool calls with LLMs
-  - Hooks for building dynamic chat and generative user interfaces
-  - Supports OpenAI (default) and other model providers
-- [shadcn/ui](https://ui.shadcn.com)
-  - Styling with [Tailwind CSS](https://tailwindcss.com)
-  - Component primitives from [Radix UI](https://radix-ui.com) for accessibility and flexibility
-- Data Persistence
-  - [Neon Serverless Postgres](https://vercel.com/marketplace/neon) for saving chat history and user data
-  - [Vercel Blob](https://vercel.com/storage/blob) for efficient file storage
-- [Auth.js](https://authjs.dev)
-  - Simple and secure authentication
+- **Natural Language Queries**: Ask questions about HMIS data in plain English
+- **HUD HMIS Compliance**: Full implementation of HUD HMIS Data Standards
+- **Real-time Analysis**: Instant access to client and project metrics
+- **Data Visualization**: Clear presentation of query results
+- **Secure Access**: Role-based authentication and data access controls
+- **Audit Trail**: Track all queries and data access
 
-## Model Providers
+## Tech Stack
 
-This template uses OpenAI's GPT-4o Mini model through the [AI SDK](https://ai-sdk.dev/docs/introduction), optimized for HMIS data analysis and queries. The model provides efficient performance with a large context window to handle comprehensive HMIS documentation.
+- **Framework**: Next.js 16
+- **Frontend**: React 19, Tailwind CSS
+- **Database**: PostgreSQL with Drizzle ORM
+- **AI**: AI SDK with custom query tools
+- **Authentication**: NextAuth.js
+- **Testing**: Playwright
 
-### AI Gateway Authentication
+## Getting Started
 
-**For Vercel deployments**: Authentication is handled automatically via OIDC tokens.
+### Prerequisites
 
-**For non-Vercel deployments**: You need to provide an AI Gateway API key by setting the `AI_GATEWAY_API_KEY` environment variable in your `.env.local` file.
+- Node.js 18+
+- PostgreSQL 15+
+- HMIS CSV data exports
 
-With the [AI SDK](https://ai-sdk.dev/docs/introduction), you can also switch to other LLM providers like [Anthropic](https://anthropic.com), [Cohere](https://cohere.com/), and [many more](https://ai-sdk.dev/providers/ai-sdk-providers) with just a few lines of code.
+### Environment Setup
 
-## Deploy Your Own
+1. Clone the repository:
+```bash
+git clone https://github.com/yourusername/hmis-ai-chatbot.git
+cd hmis-ai-chatbot
+```
 
-You can deploy your own version of the Next.js AI Chatbot to Vercel with one click:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/next.js/nextjs-ai-chatbot)
-
-## Running locally
-
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js AI Chatbot. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/projects/environment-variables) for this, but a `.env` file is all that is necessary.
-
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control access to your various AI and authentication provider accounts.
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
-
+2. Install dependencies:
 ```bash
 pnpm install
-pnpm db:migrate # Setup database or apply latest database changes
+```
+
+3. Copy the example environment file:
+```bash
+cp .env.example .env.local
+```
+
+4. Configure your environment variables:
+```env
+POSTGRES_URL=postgresql://user:password@localhost:5432/hmis
+AI_GATEWAY_API_KEY=your_api_key
+```
+
+### Database Setup
+
+1. Run migrations:
+```bash
+pnpm db:migrate
+```
+
+2. Load HMIS data:
+```bash
+pnpm db:seed
+```
+
+### Running the Application
+
+1. Start the development server:
+```bash
 pnpm dev
 ```
 
-Your app template should now be running on [localhost:3000](http://localhost:3000).
+2. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## Usage Examples
+
+Ask questions like:
+
+- "How many clients were served last month?"
+- "What's the average length of stay in emergency shelters?"
+- "Show me the breakdown of exit destinations for RRH projects"
+- "What percentage of clients increased their income?"
+- "Which projects have the highest permanent housing placement rates?"
+
+## Project Structure
+
+```
+.
+├── app/                  # Next.js app router
+├── components/          # React components
+├── data/               # HMIS CSV data files
+├── database/           # Schema and documentation
+├── lib/                # Core utilities
+│   ├── ai/            # AI tools and prompts
+│   ├── db/            # Database configuration
+│   └── utils/         # Helper functions
+├── public/            # Static assets
+├── scripts/           # Data loading scripts
+└── tests/             # Test suites
+```
+
+## Development
+
+### Running Tests
+
+```bash
+# Run all tests
+pnpm test
+
+# Run specific test suite
+pnpm test tests/llm-query-tests.ts
+```
+
+### Code Style
+
+We use Ultracite for code formatting and linting:
+
+```bash
+# Check code style
+pnpm lint
+
+# Fix code style issues
+pnpm format
+```
+
+## Database Schema
+
+The database implements the [HUD HMIS Data Standards](https://www.hudexchange.info/resource/3824/hmis-data-dictionary/), including:
+
+- Client demographics
+- Project enrollments
+- Services provided
+- Income and benefits
+- Outcomes and exits
+
+See [database/schema.md](database/schema.md) for complete documentation.
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Built on [Next.js AI Chatbot](https://github.com/vercel/ai-chatbot) template
+- Implements [HUD HMIS Data Standards](https://www.hudexchange.info/resource/3824/hmis-data-dictionary/)
+- Uses [AI SDK](https://sdk.vercel.ai/docs) for natural language processing
