@@ -8,6 +8,7 @@ import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 import { unstable_serialize } from "swr/infinite";
 import { PlusIcon, TrashIcon } from "@/components/icons";
+import { SettingsIcon } from "@/components/icons/settings";
 import {
   getChatHistoryPaginationKey,
   SidebarHistory,
@@ -76,21 +77,39 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               </Link>
               <div className="flex flex-row gap-1">
                 {user && (
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        className="h-8 p-1 md:h-fit md:p-2"
-                        onClick={() => setShowDeleteAllDialog(true)}
-                        type="button"
-                        variant="ghost"
-                      >
-                        <TrashIcon />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent align="end" className="hidden md:block">
-                      Delete All Chats
-                    </TooltipContent>
-                  </Tooltip>
+                  <>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          className="h-8 p-1 md:h-fit md:p-2"
+                          onClick={() => setShowDeleteAllDialog(true)}
+                          type="button"
+                          variant="ghost"
+                        >
+                          <TrashIcon />
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent align="end" className="hidden md:block">
+                        Delete All Chats
+                      </TooltipContent>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          asChild
+                          className="h-8 p-1 md:h-fit md:p-2"
+                          variant="ghost"
+                        >
+                          <Link href="/settings/prompt">
+                            <SettingsIcon />
+                          </Link>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipContent align="end" className="hidden md:block">
+                        Prompt Settings
+                      </TooltipContent>
+                    </Tooltip>
+                  </>
                 )}
                 <Tooltip>
                   <TooltipTrigger asChild>

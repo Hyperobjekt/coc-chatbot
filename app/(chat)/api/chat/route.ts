@@ -22,8 +22,8 @@ import { entitlementsByUserType } from "@/lib/ai/entitlements";
 import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
-import { queryData, getContext } from "@/lib/ai/tools/query-data";
 import { queryDataTool } from "@/lib/ai/tools/definitions";
+import { getContext, queryData } from "@/lib/ai/tools/query-data";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -176,14 +176,14 @@ export async function POST(request: Request) {
     let finalMergedUsage: AppUsage | undefined;
 
     const stream = createUIMessageStream({
-      execute: ({ writer: dataStream }) => {
-        const result = streamText({
-          model: myProvider.languageModel(selectedChatModel),
-          system: systemPrompt({ 
-            selectedChatModel, 
-            requestHints,
-            databaseContext: getContext()
-          }),
+      execute: async ({ writer: dataStream }) => {
+        const result = await streamText({
+        model: myProvider.languageModel(selectedChatModel),
+        system: await systemPrompt({ 
+          selectedChatModel, 
+          requestHints,
+          databaseContext: getContext()
+        }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
           experimental_activeTools:
