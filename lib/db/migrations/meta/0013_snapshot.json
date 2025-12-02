@@ -1,0 +1,4698 @@
+{
+  "id": "2324a0f3-b0a3-4065-92cc-580d8b9281a7",
+  "prevId": "5b02b2c0-b94a-4a86-8a26-b28c38f56f0a",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.Assessment": {
+      "name": "Assessment",
+      "schema": "",
+      "columns": {
+        "AssessmentID": {
+          "name": "AssessmentID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AssessmentDate": {
+          "name": "AssessmentDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AssessmentLocation": {
+          "name": "AssessmentLocation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AssessmentType": {
+          "name": "AssessmentType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AssessmentLevel": {
+          "name": "AssessmentLevel",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PrioritizationStatus": {
+          "name": "PrioritizationStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "assessment_enrollment_id_idx": {
+          "name": "assessment_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "assessment_personal_id_idx": {
+          "name": "assessment_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "assessment_export_id_idx": {
+          "name": "assessment_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "assessment_date_idx": {
+          "name": "assessment_date_idx",
+          "columns": [
+            {
+              "expression": "AssessmentDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Assessment_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "Assessment_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "Assessment",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Assessment_PersonalID_Client_PersonalID_fk": {
+          "name": "Assessment_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "Assessment",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.CEParticipation": {
+      "name": "CEParticipation",
+      "schema": "",
+      "columns": {
+        "CEParticipationID": {
+          "name": "CEParticipationID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AccessPoint": {
+          "name": "AccessPoint",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PreventionAssessment": {
+          "name": "PreventionAssessment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CrisisAssessment": {
+          "name": "CrisisAssessment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HousingAssessment": {
+          "name": "HousingAssessment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DirectServices": {
+          "name": "DirectServices",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReceivesReferrals": {
+          "name": "ReceivesReferrals",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CEParticipationStatusStartDate": {
+          "name": "CEParticipationStatusStartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CEParticipationStatusEndDate": {
+          "name": "CEParticipationStatusEndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "ce_participation_project_id_idx": {
+          "name": "ce_participation_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ce_participation_export_id_idx": {
+          "name": "ce_participation_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ce_participation_start_date_idx": {
+          "name": "ce_participation_start_date_idx",
+          "columns": [
+            {
+              "expression": "CEParticipationStatusStartDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "ce_participation_end_date_idx": {
+          "name": "ce_participation_end_date_idx",
+          "columns": [
+            {
+              "expression": "CEParticipationStatusEndDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "CEParticipation_ProjectID_Project_ProjectID_fk": {
+          "name": "CEParticipation_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "CEParticipation",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Chat": {
+      "name": "Chat",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "visibility": {
+          "name": "visibility",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'private'"
+        },
+        "lastContext": {
+          "name": "lastContext",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Chat_userId_User_id_fk": {
+          "name": "Chat_userId_User_id_fk",
+          "tableFrom": "Chat",
+          "tableTo": "User",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Client": {
+      "name": "Client",
+      "schema": "",
+      "columns": {
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "FirstName": {
+          "name": "FirstName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MiddleName": {
+          "name": "MiddleName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LastName": {
+          "name": "LastName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NameSuffix": {
+          "name": "NameSuffix",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NameDataQuality": {
+          "name": "NameDataQuality",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSN": {
+          "name": "SSN",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSNDataQuality": {
+          "name": "SSNDataQuality",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DOB": {
+          "name": "DOB",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DOBDataQuality": {
+          "name": "DOBDataQuality",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AmIndAKNative": {
+          "name": "AmIndAKNative",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Asian": {
+          "name": "Asian",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "BlackAfAmerican": {
+          "name": "BlackAfAmerican",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HispanicLatinaeo": {
+          "name": "HispanicLatinaeo",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MidEastNAfrican": {
+          "name": "MidEastNAfrican",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NativeHIPacific": {
+          "name": "NativeHIPacific",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "White": {
+          "name": "White",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RaceNone": {
+          "name": "RaceNone",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AdditionalRaceEthnicity": {
+          "name": "AdditionalRaceEthnicity",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Woman": {
+          "name": "Woman",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Man": {
+          "name": "Man",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NonBinary": {
+          "name": "NonBinary",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CulturallySpecific": {
+          "name": "CulturallySpecific",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Transgender": {
+          "name": "Transgender",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Questioning": {
+          "name": "Questioning",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DifferentIdentity": {
+          "name": "DifferentIdentity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GenderNone": {
+          "name": "GenderNone",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DifferentIdentityText": {
+          "name": "DifferentIdentityText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VeteranStatus": {
+          "name": "VeteranStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "YearEnteredService": {
+          "name": "YearEnteredService",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "YearSeparated": {
+          "name": "YearSeparated",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WorldWarII": {
+          "name": "WorldWarII",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "KoreanWar": {
+          "name": "KoreanWar",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VietnamWar": {
+          "name": "VietnamWar",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DesertStorm": {
+          "name": "DesertStorm",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AfghanistanOEF": {
+          "name": "AfghanistanOEF",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "IraqOIF": {
+          "name": "IraqOIF",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "IraqOND": {
+          "name": "IraqOND",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherTheater": {
+          "name": "OtherTheater",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MilitaryBranch": {
+          "name": "MilitaryBranch",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DischargeStatus": {
+          "name": "DischargeStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "client_export_id_idx": {
+          "name": "client_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.CurrentLivingSituation": {
+      "name": "CurrentLivingSituation",
+      "schema": "",
+      "columns": {
+        "CurrentLivingSitID": {
+          "name": "CurrentLivingSitID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InformationDate": {
+          "name": "InformationDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CurrentLivingSituation": {
+          "name": "CurrentLivingSituation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CLSSubsidyType": {
+          "name": "CLSSubsidyType",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VerifiedBy": {
+          "name": "VerifiedBy",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LeaveSituation14Days": {
+          "name": "LeaveSituation14Days",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SubsequentResidence": {
+          "name": "SubsequentResidence",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ResourcesToObtain": {
+          "name": "ResourcesToObtain",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LeaseOwn60Day": {
+          "name": "LeaseOwn60Day",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MovedTwoOrMore": {
+          "name": "MovedTwoOrMore",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LocationDetails": {
+          "name": "LocationDetails",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "current_living_situation_enrollment_id_idx": {
+          "name": "current_living_situation_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "current_living_situation_personal_id_idx": {
+          "name": "current_living_situation_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "current_living_situation_export_id_idx": {
+          "name": "current_living_situation_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "current_living_situation_information_date_idx": {
+          "name": "current_living_situation_information_date_idx",
+          "columns": [
+            {
+              "expression": "InformationDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "CurrentLivingSituation_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "CurrentLivingSituation_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "CurrentLivingSituation",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "CurrentLivingSituation_PersonalID_Client_PersonalID_fk": {
+          "name": "CurrentLivingSituation_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "CurrentLivingSituation",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.DestinationLookup": {
+      "name": "DestinationLookup",
+      "schema": "",
+      "columns": {
+        "Code": {
+          "name": "Code",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Category": {
+          "name": "Category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Document": {
+      "name": "Document",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "title": {
+          "name": "title",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "text": {
+          "name": "text",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'text'"
+        },
+        "userId": {
+          "name": "userId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Document_userId_User_id_fk": {
+          "name": "Document_userId_User_id_fk",
+          "tableFrom": "Document",
+          "tableTo": "User",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Document_id_createdAt_pk": {
+          "name": "Document_id_createdAt_pk",
+          "columns": [
+            "id",
+            "createdAt"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.EmploymentEducation": {
+      "name": "EmploymentEducation",
+      "schema": "",
+      "columns": {
+        "EmploymentEducationID": {
+          "name": "EmploymentEducationID",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InformationDate": {
+          "name": "InformationDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LastGradeCompleted": {
+          "name": "LastGradeCompleted",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SchoolStatus": {
+          "name": "SchoolStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Employed": {
+          "name": "Employed",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EmploymentType": {
+          "name": "EmploymentType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NotEmployedReason": {
+          "name": "NotEmployedReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DataCollectionStage": {
+          "name": "DataCollectionStage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "employment_education_enrollment_id_idx": {
+          "name": "employment_education_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "employment_education_personal_id_idx": {
+          "name": "employment_education_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "employment_education_export_id_idx": {
+          "name": "employment_education_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "employment_education_information_date_idx": {
+          "name": "employment_education_information_date_idx",
+          "columns": [
+            {
+              "expression": "InformationDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "EmploymentEducation_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "EmploymentEducation_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "EmploymentEducation",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "EmploymentEducation_PersonalID_Client_PersonalID_fk": {
+          "name": "EmploymentEducation_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "EmploymentEducation",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Enrollment": {
+      "name": "Enrollment",
+      "schema": "",
+      "columns": {
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EntryDate": {
+          "name": "EntryDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HouseholdID": {
+          "name": "HouseholdID",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RelationshipToHoH": {
+          "name": "RelationshipToHoH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EnrollmentCoC": {
+          "name": "EnrollmentCoC",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LivingSituation": {
+          "name": "LivingSituation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RentalSubsidyType": {
+          "name": "RentalSubsidyType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LengthOfStay": {
+          "name": "LengthOfStay",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LOSUnderThreshold": {
+          "name": "LOSUnderThreshold",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PreviousStreetESSH": {
+          "name": "PreviousStreetESSH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateToStreetESSH": {
+          "name": "DateToStreetESSH",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TimesHomelessPastThreeYears": {
+          "name": "TimesHomelessPastThreeYears",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MonthsHomelessPastThreeYears": {
+          "name": "MonthsHomelessPastThreeYears",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DisablingCondition": {
+          "name": "DisablingCondition",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateOfEngagement": {
+          "name": "DateOfEngagement",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MoveInDate": {
+          "name": "MoveInDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateOfPATHStatus": {
+          "name": "DateOfPATHStatus",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ClientEnrolledInPATH": {
+          "name": "ClientEnrolledInPATH",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReasonNotEnrolled": {
+          "name": "ReasonNotEnrolled",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PercentAMI": {
+          "name": "PercentAMI",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReferralSource": {
+          "name": "ReferralSource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CountOutreachReferralApproaches": {
+          "name": "CountOutreachReferralApproaches",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateOfBCPStatus": {
+          "name": "DateOfBCPStatus",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EligibleForRHY": {
+          "name": "EligibleForRHY",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReasonNoServices": {
+          "name": "ReasonNoServices",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RunawayYouth": {
+          "name": "RunawayYouth",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SexualOrientation": {
+          "name": "SexualOrientation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SexualOrientationOther": {
+          "name": "SexualOrientationOther",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "FormerWardChildWelfare": {
+          "name": "FormerWardChildWelfare",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ChildWelfareYears": {
+          "name": "ChildWelfareYears",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ChildWelfareMonths": {
+          "name": "ChildWelfareMonths",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "FormerWardJuvenileJustice": {
+          "name": "FormerWardJuvenileJustice",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "JuvenileJusticeYears": {
+          "name": "JuvenileJusticeYears",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "JuvenileJusticeMonths": {
+          "name": "JuvenileJusticeMonths",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "enrollment_personal_id_idx": {
+          "name": "enrollment_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "enrollment_project_id_idx": {
+          "name": "enrollment_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "enrollment_export_id_idx": {
+          "name": "enrollment_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "enrollment_entry_date_idx": {
+          "name": "enrollment_entry_date_idx",
+          "columns": [
+            {
+              "expression": "EntryDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Enrollment_PersonalID_Client_PersonalID_fk": {
+          "name": "Enrollment_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "Enrollment",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Enrollment_ProjectID_Project_ProjectID_fk": {
+          "name": "Enrollment_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "Enrollment",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Enrollment_LivingSituation_LivingSituationLookup_Code_fk": {
+          "name": "Enrollment_LivingSituation_LivingSituationLookup_Code_fk",
+          "tableFrom": "Enrollment",
+          "tableTo": "LivingSituationLookup",
+          "columnsFrom": [
+            "LivingSituation"
+          ],
+          "columnsTo": [
+            "Code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Event": {
+      "name": "Event",
+      "schema": "",
+      "columns": {
+        "EventID": {
+          "name": "EventID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EventDate": {
+          "name": "EventDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Event": {
+          "name": "Event",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProbSolDivRRResult": {
+          "name": "ProbSolDivRRResult",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReferralCaseManageAfter": {
+          "name": "ReferralCaseManageAfter",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LocationCrisisOrPHHousing": {
+          "name": "LocationCrisisOrPHHousing",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReferralResult": {
+          "name": "ReferralResult",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ResultDate": {
+          "name": "ResultDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "event_enrollment_id_idx": {
+          "name": "event_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "event_personal_id_idx": {
+          "name": "event_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "event_export_id_idx": {
+          "name": "event_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "event_date_idx": {
+          "name": "event_date_idx",
+          "columns": [
+            {
+              "expression": "EventDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Event_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "Event_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "Event",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Event_PersonalID_Client_PersonalID_fk": {
+          "name": "Event_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "Event",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Exit": {
+      "name": "Exit",
+      "schema": "",
+      "columns": {
+        "ExitID": {
+          "name": "ExitID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExitDate": {
+          "name": "ExitDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Destination": {
+          "name": "Destination",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DestinationSubsidyType": {
+          "name": "DestinationSubsidyType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherDestination": {
+          "name": "OtherDestination",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HousingAssessment": {
+          "name": "HousingAssessment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SubsidyInformation": {
+          "name": "SubsidyInformation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProjectCompletionStatus": {
+          "name": "ProjectCompletionStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EarlyExitReason": {
+          "name": "EarlyExitReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExchangeForSex": {
+          "name": "ExchangeForSex",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExchangeForSexPastThreeMonths": {
+          "name": "ExchangeForSexPastThreeMonths",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CountOfExchangeForSex": {
+          "name": "CountOfExchangeForSex",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AskedOrForcedToExchangeForSex": {
+          "name": "AskedOrForcedToExchangeForSex",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WorkplaceViolenceThreats": {
+          "name": "WorkplaceViolenceThreats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WorkplacePromiseDifference": {
+          "name": "WorkplacePromiseDifference",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CoercedToContinueWork": {
+          "name": "CoercedToContinueWork",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "LaborExploitPastThreeMonths": {
+          "name": "LaborExploitPastThreeMonths",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CounselingReceived": {
+          "name": "CounselingReceived",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "IndividualCounseling": {
+          "name": "IndividualCounseling",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "FamilyCounseling": {
+          "name": "FamilyCounseling",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GroupCounseling": {
+          "name": "GroupCounseling",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SessionCountAtExit": {
+          "name": "SessionCountAtExit",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PostExitCounselingPlan": {
+          "name": "PostExitCounselingPlan",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SessionsInPlan": {
+          "name": "SessionsInPlan",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DestinationSafeClient": {
+          "name": "DestinationSafeClient",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DestinationSafeWorker": {
+          "name": "DestinationSafeWorker",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PosAdultConnections": {
+          "name": "PosAdultConnections",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PosPeerConnections": {
+          "name": "PosPeerConnections",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PosCommunityConnections": {
+          "name": "PosCommunityConnections",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AftercareDate": {
+          "name": "AftercareDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AftercareProvided": {
+          "name": "AftercareProvided",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EmailSocialMedia": {
+          "name": "EmailSocialMedia",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Telephone": {
+          "name": "Telephone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InPersonIndividual": {
+          "name": "InPersonIndividual",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InPersonGroup": {
+          "name": "InPersonGroup",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CMExitReason": {
+          "name": "CMExitReason",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "exit_enrollment_id_idx": {
+          "name": "exit_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "exit_personal_id_idx": {
+          "name": "exit_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "exit_export_id_idx": {
+          "name": "exit_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "exit_date_idx": {
+          "name": "exit_date_idx",
+          "columns": [
+            {
+              "expression": "ExitDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Exit_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "Exit_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "Exit",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Exit_PersonalID_Client_PersonalID_fk": {
+          "name": "Exit_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "Exit",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Exit_Destination_DestinationLookup_Code_fk": {
+          "name": "Exit_Destination_DestinationLookup_Code_fk",
+          "tableFrom": "Exit",
+          "tableTo": "DestinationLookup",
+          "columnsFrom": [
+            "Destination"
+          ],
+          "columnsTo": [
+            "Code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Export": {
+      "name": "Export",
+      "schema": "",
+      "columns": {
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "SourceType": {
+          "name": "SourceType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceID": {
+          "name": "SourceID",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceName": {
+          "name": "SourceName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceContactFirst": {
+          "name": "SourceContactFirst",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceContactLast": {
+          "name": "SourceContactLast",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceContactPhone": {
+          "name": "SourceContactPhone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceContactExtension": {
+          "name": "SourceContactExtension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SourceContactEmail": {
+          "name": "SourceContactEmail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportDate": {
+          "name": "ExportDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportStartDate": {
+          "name": "ExportStartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportEndDate": {
+          "name": "ExportEndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SoftwareName": {
+          "name": "SoftwareName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SoftwareVersion": {
+          "name": "SoftwareVersion",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CSVVersion": {
+          "name": "CSVVersion",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportPeriodType": {
+          "name": "ExportPeriodType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportDirective": {
+          "name": "ExportDirective",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HashStatus": {
+          "name": "HashStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ImplementationID": {
+          "name": "ImplementationID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Funder": {
+      "name": "Funder",
+      "schema": "",
+      "columns": {
+        "FunderID": {
+          "name": "FunderID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Funder": {
+          "name": "Funder",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherFunder": {
+          "name": "OtherFunder",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GrantID": {
+          "name": "GrantID",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "StartDate": {
+          "name": "StartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EndDate": {
+          "name": "EndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "funder_project_id_idx": {
+          "name": "funder_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "funder_export_id_idx": {
+          "name": "funder_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "funder_start_date_idx": {
+          "name": "funder_start_date_idx",
+          "columns": [
+            {
+              "expression": "StartDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "funder_end_date_idx": {
+          "name": "funder_end_date_idx",
+          "columns": [
+            {
+              "expression": "EndDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Funder_ProjectID_Project_ProjectID_fk": {
+          "name": "Funder_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "Funder",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.HealthAndDV": {
+      "name": "HealthAndDV",
+      "schema": "",
+      "columns": {
+        "HealthAndDVID": {
+          "name": "HealthAndDVID",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InformationDate": {
+          "name": "InformationDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DomesticViolenceSurvivor": {
+          "name": "DomesticViolenceSurvivor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WhenOccurred": {
+          "name": "WhenOccurred",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CurrentlyFleeing": {
+          "name": "CurrentlyFleeing",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GeneralHealthStatus": {
+          "name": "GeneralHealthStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DentalHealthStatus": {
+          "name": "DentalHealthStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "MentalHealthStatus": {
+          "name": "MentalHealthStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PregnancyStatus": {
+          "name": "PregnancyStatus",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DueDate": {
+          "name": "DueDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DataCollectionStage": {
+          "name": "DataCollectionStage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "health_and_dv_enrollment_id_idx": {
+          "name": "health_and_dv_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "health_and_dv_personal_id_idx": {
+          "name": "health_and_dv_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "health_and_dv_export_id_idx": {
+          "name": "health_and_dv_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "health_and_dv_information_date_idx": {
+          "name": "health_and_dv_information_date_idx",
+          "columns": [
+            {
+              "expression": "InformationDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "HealthAndDV_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "HealthAndDV_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "HealthAndDV",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "HealthAndDV_PersonalID_Client_PersonalID_fk": {
+          "name": "HealthAndDV_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "HealthAndDV",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.HMISParticipation": {
+      "name": "HMISParticipation",
+      "schema": "",
+      "columns": {
+        "HMISParticipationID": {
+          "name": "HMISParticipationID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HMISParticipationType": {
+          "name": "HMISParticipationType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HMISParticipationStatusStartDate": {
+          "name": "HMISParticipationStatusStartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HMISParticipationStatusEndDate": {
+          "name": "HMISParticipationStatusEndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "hmis_participation_project_id_idx": {
+          "name": "hmis_participation_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "hmis_participation_export_id_idx": {
+          "name": "hmis_participation_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "hmis_participation_start_date_idx": {
+          "name": "hmis_participation_start_date_idx",
+          "columns": [
+            {
+              "expression": "HMISParticipationStatusStartDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "hmis_participation_end_date_idx": {
+          "name": "hmis_participation_end_date_idx",
+          "columns": [
+            {
+              "expression": "HMISParticipationStatusEndDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "HMISParticipation_ProjectID_Project_ProjectID_fk": {
+          "name": "HMISParticipation_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "HMISParticipation",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.HousingStatusLookup": {
+      "name": "HousingStatusLookup",
+      "schema": "",
+      "columns": {
+        "Code": {
+          "name": "Code",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.IncomeBenefits": {
+      "name": "IncomeBenefits",
+      "schema": "",
+      "columns": {
+        "IncomeBenefitsID": {
+          "name": "IncomeBenefitsID",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InformationDate": {
+          "name": "InformationDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "IncomeFromAnySource": {
+          "name": "IncomeFromAnySource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TotalMonthlyIncome": {
+          "name": "TotalMonthlyIncome",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Earned": {
+          "name": "Earned",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EarnedAmount": {
+          "name": "EarnedAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Unemployment": {
+          "name": "Unemployment",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UnemploymentAmount": {
+          "name": "UnemploymentAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSI": {
+          "name": "SSI",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSIAmount": {
+          "name": "SSIAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSDI": {
+          "name": "SSDI",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SSDIAmount": {
+          "name": "SSDIAmount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VADisabilityService": {
+          "name": "VADisabilityService",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VADisabilityServiceAmount": {
+          "name": "VADisabilityServiceAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VADisabilityNonService": {
+          "name": "VADisabilityNonService",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VADisabilityNonServiceAmount": {
+          "name": "VADisabilityNonServiceAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PrivateDisability": {
+          "name": "PrivateDisability",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PrivateDisabilityAmount": {
+          "name": "PrivateDisabilityAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WorkersComp": {
+          "name": "WorkersComp",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WorkersCompAmount": {
+          "name": "WorkersCompAmount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TANF": {
+          "name": "TANF",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TANFAmount": {
+          "name": "TANFAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GA": {
+          "name": "GA",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GAAmount": {
+          "name": "GAAmount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SocSecRetirement": {
+          "name": "SocSecRetirement",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SocSecRetirementAmount": {
+          "name": "SocSecRetirementAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Pension": {
+          "name": "Pension",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PensionAmount": {
+          "name": "PensionAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ChildSupport": {
+          "name": "ChildSupport",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ChildSupportAmount": {
+          "name": "ChildSupportAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Alimony": {
+          "name": "Alimony",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "AlimonyAmount": {
+          "name": "AlimonyAmount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherIncomeSource": {
+          "name": "OtherIncomeSource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherIncomeAmount": {
+          "name": "OtherIncomeAmount",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherIncomeSourceIdentify": {
+          "name": "OtherIncomeSourceIdentify",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "BenefitsFromAnySource": {
+          "name": "BenefitsFromAnySource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SNAP": {
+          "name": "SNAP",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "WIC": {
+          "name": "WIC",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TANFChildCare": {
+          "name": "TANFChildCare",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TANFTransportation": {
+          "name": "TANFTransportation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherTANF": {
+          "name": "OtherTANF",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherBenefitsSource": {
+          "name": "OtherBenefitsSource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherBenefitsSourceIdentify": {
+          "name": "OtherBenefitsSourceIdentify",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InsuranceFromAnySource": {
+          "name": "InsuranceFromAnySource",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Medicaid": {
+          "name": "Medicaid",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoMedicaidReason": {
+          "name": "NoMedicaidReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Medicare": {
+          "name": "Medicare",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoMedicareReason": {
+          "name": "NoMedicareReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SCHIP": {
+          "name": "SCHIP",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoSCHIPReason": {
+          "name": "NoSCHIPReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VHAServices": {
+          "name": "VHAServices",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoVHAReason": {
+          "name": "NoVHAReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "EmployerProvided": {
+          "name": "EmployerProvided",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoEmployerProvidedReason": {
+          "name": "NoEmployerProvidedReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "COBRA": {
+          "name": "COBRA",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoCOBRAReason": {
+          "name": "NoCOBRAReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PrivatePay": {
+          "name": "PrivatePay",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoPrivatePayReason": {
+          "name": "NoPrivatePayReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "StateHealthIns": {
+          "name": "StateHealthIns",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoStateHealthInsReason": {
+          "name": "NoStateHealthInsReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "IndianHealthServices": {
+          "name": "IndianHealthServices",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "NoIndianHealthServicesReason": {
+          "name": "NoIndianHealthServicesReason",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherInsurance": {
+          "name": "OtherInsurance",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherInsuranceIdentify": {
+          "name": "OtherInsuranceIdentify",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ConnectionWithSOAR": {
+          "name": "ConnectionWithSOAR",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DataCollectionStage": {
+          "name": "DataCollectionStage",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "income_benefits_enrollment_id_idx": {
+          "name": "income_benefits_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "income_benefits_personal_id_idx": {
+          "name": "income_benefits_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "income_benefits_export_id_idx": {
+          "name": "income_benefits_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "income_benefits_information_date_idx": {
+          "name": "income_benefits_information_date_idx",
+          "columns": [
+            {
+              "expression": "InformationDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "IncomeBenefits_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "IncomeBenefits_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "IncomeBenefits",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "IncomeBenefits_PersonalID_Client_PersonalID_fk": {
+          "name": "IncomeBenefits_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "IncomeBenefits",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Inventory": {
+      "name": "Inventory",
+      "schema": "",
+      "columns": {
+        "InventoryID": {
+          "name": "InventoryID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CoCCode": {
+          "name": "CoCCode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HouseholdType": {
+          "name": "HouseholdType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Availability": {
+          "name": "Availability",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UnitInventory": {
+          "name": "UnitInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "BedInventory": {
+          "name": "BedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CHVetBedInventory": {
+          "name": "CHVetBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "YouthVetBedInventory": {
+          "name": "YouthVetBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VetBedInventory": {
+          "name": "VetBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CHYouthBedInventory": {
+          "name": "CHYouthBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "YouthBedInventory": {
+          "name": "YouthBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CHBedInventory": {
+          "name": "CHBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherBedInventory": {
+          "name": "OtherBedInventory",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ESBedType": {
+          "name": "ESBedType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InventoryStartDate": {
+          "name": "InventoryStartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "InventoryEndDate": {
+          "name": "InventoryEndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "inventory_project_id_idx": {
+          "name": "inventory_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "inventory_export_id_idx": {
+          "name": "inventory_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "inventory_start_date_idx": {
+          "name": "inventory_start_date_idx",
+          "columns": [
+            {
+              "expression": "InventoryStartDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "inventory_end_date_idx": {
+          "name": "inventory_end_date_idx",
+          "columns": [
+            {
+              "expression": "InventoryEndDate",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Inventory_ProjectID_Project_ProjectID_fk": {
+          "name": "Inventory_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "Inventory",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.LivingSituationLookup": {
+      "name": "LivingSituationLookup",
+      "schema": "",
+      "columns": {
+        "Code": {
+          "name": "Code",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Category": {
+          "name": "Category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Message_v2": {
+      "name": "Message_v2",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "chatId": {
+          "name": "chatId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parts": {
+          "name": "parts",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "attachments": {
+          "name": "attachments",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Message_v2_chatId_Chat_id_fk": {
+          "name": "Message_v2_chatId_Chat_id_fk",
+          "tableFrom": "Message_v2",
+          "tableTo": "Chat",
+          "columnsFrom": [
+            "chatId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Message": {
+      "name": "Message",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "chatId": {
+          "name": "chatId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "role": {
+          "name": "role",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "content": {
+          "name": "content",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Message_chatId_Chat_id_fk": {
+          "name": "Message_chatId_Chat_id_fk",
+          "tableFrom": "Message",
+          "tableTo": "Chat",
+          "columnsFrom": [
+            "chatId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Organization": {
+      "name": "Organization",
+      "schema": "",
+      "columns": {
+        "OrganizationID": {
+          "name": "OrganizationID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "OrganizationName": {
+          "name": "OrganizationName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "VictimServiceProvider": {
+          "name": "VictimServiceProvider",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OrganizationCommonName": {
+          "name": "OrganizationCommonName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "organization_export_id_idx": {
+          "name": "organization_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Project": {
+      "name": "Project",
+      "schema": "",
+      "columns": {
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "OrganizationID": {
+          "name": "OrganizationID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProjectName": {
+          "name": "ProjectName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProjectCommonName": {
+          "name": "ProjectCommonName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OperatingStartDate": {
+          "name": "OperatingStartDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OperatingEndDate": {
+          "name": "OperatingEndDate",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ContinuumProject": {
+          "name": "ContinuumProject",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ProjectType": {
+          "name": "ProjectType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HousingType": {
+          "name": "HousingType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RRHSubType": {
+          "name": "RRHSubType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ResidentialAffiliation": {
+          "name": "ResidentialAffiliation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TargetPopulation": {
+          "name": "TargetPopulation",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "HOPWAMedAssistedLivingFac": {
+          "name": "HOPWAMedAssistedLivingFac",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PITCount": {
+          "name": "PITCount",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "project_organization_id_idx": {
+          "name": "project_organization_id_idx",
+          "columns": [
+            {
+              "expression": "OrganizationID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "project_export_id_idx": {
+          "name": "project_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Project_OrganizationID_Organization_OrganizationID_fk": {
+          "name": "Project_OrganizationID_Organization_OrganizationID_fk",
+          "tableFrom": "Project",
+          "tableTo": "Organization",
+          "columnsFrom": [
+            "OrganizationID"
+          ],
+          "columnsTo": [
+            "OrganizationID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Project_ProjectType_ProjectTypeLookup_Code_fk": {
+          "name": "Project_ProjectType_ProjectTypeLookup_Code_fk",
+          "tableFrom": "Project",
+          "tableTo": "ProjectTypeLookup",
+          "columnsFrom": [
+            "ProjectType"
+          ],
+          "columnsTo": [
+            "Code"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ProjectCoC": {
+      "name": "ProjectCoC",
+      "schema": "",
+      "columns": {
+        "ProjectCoCID": {
+          "name": "ProjectCoCID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "ProjectID": {
+          "name": "ProjectID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "CoCCode": {
+          "name": "CoCCode",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Geocode": {
+          "name": "Geocode",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Address1": {
+          "name": "Address1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "Address2": {
+          "name": "Address2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "City": {
+          "name": "City",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "State": {
+          "name": "State",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ZIP": {
+          "name": "ZIP",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "GeographyType": {
+          "name": "GeographyType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "project_coc_project_id_idx": {
+          "name": "project_coc_project_id_idx",
+          "columns": [
+            {
+              "expression": "ProjectID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "project_coc_export_id_idx": {
+          "name": "project_coc_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "ProjectCoC_ProjectID_Project_ProjectID_fk": {
+          "name": "ProjectCoC_ProjectID_Project_ProjectID_fk",
+          "tableFrom": "ProjectCoC",
+          "tableTo": "Project",
+          "columnsFrom": [
+            "ProjectID"
+          ],
+          "columnsTo": [
+            "ProjectID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.ProjectTypeLookup": {
+      "name": "ProjectTypeLookup",
+      "schema": "",
+      "columns": {
+        "Code": {
+          "name": "Code",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "Description": {
+          "name": "Description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Services": {
+      "name": "Services",
+      "schema": "",
+      "columns": {
+        "ServicesID": {
+          "name": "ServicesID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "EnrollmentID": {
+          "name": "EnrollmentID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "PersonalID": {
+          "name": "PersonalID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateProvided": {
+          "name": "DateProvided",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "RecordType": {
+          "name": "RecordType",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "TypeProvided": {
+          "name": "TypeProvided",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "OtherTypeProvided": {
+          "name": "OtherTypeProvided",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "SubTypeProvided": {
+          "name": "SubTypeProvided",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "FAAmount": {
+          "name": "FAAmount",
+          "type": "numeric",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ReferralOutcome": {
+          "name": "ReferralOutcome",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "services_enrollment_id_idx": {
+          "name": "services_enrollment_id_idx",
+          "columns": [
+            {
+              "expression": "EnrollmentID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "services_personal_id_idx": {
+          "name": "services_personal_id_idx",
+          "columns": [
+            {
+              "expression": "PersonalID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "services_export_id_idx": {
+          "name": "services_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "services_date_provided_idx": {
+          "name": "services_date_provided_idx",
+          "columns": [
+            {
+              "expression": "DateProvided",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "Services_EnrollmentID_Enrollment_EnrollmentID_fk": {
+          "name": "Services_EnrollmentID_Enrollment_EnrollmentID_fk",
+          "tableFrom": "Services",
+          "tableTo": "Enrollment",
+          "columnsFrom": [
+            "EnrollmentID"
+          ],
+          "columnsTo": [
+            "EnrollmentID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Services_PersonalID_Client_PersonalID_fk": {
+          "name": "Services_PersonalID_Client_PersonalID_fk",
+          "tableFrom": "Services",
+          "tableTo": "Client",
+          "columnsFrom": [
+            "PersonalID"
+          ],
+          "columnsTo": [
+            "PersonalID"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Stream": {
+      "name": "Stream",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "chatId": {
+          "name": "chatId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Stream_chatId_Chat_id_fk": {
+          "name": "Stream_chatId_Chat_id_fk",
+          "tableFrom": "Stream",
+          "tableTo": "Chat",
+          "columnsFrom": [
+            "chatId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Stream_id_pk": {
+          "name": "Stream_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.Suggestion": {
+      "name": "Suggestion",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "documentId": {
+          "name": "documentId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "documentCreatedAt": {
+          "name": "documentCreatedAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "originalText": {
+          "name": "originalText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "suggestedText": {
+          "name": "suggestedText",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "description": {
+          "name": "description",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isResolved": {
+          "name": "isResolved",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true,
+          "default": false
+        },
+        "userId": {
+          "name": "userId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Suggestion_userId_User_id_fk": {
+          "name": "Suggestion_userId_User_id_fk",
+          "tableFrom": "Suggestion",
+          "tableTo": "User",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Suggestion_documentId_documentCreatedAt_Document_id_createdAt_fk": {
+          "name": "Suggestion_documentId_documentCreatedAt_Document_id_createdAt_fk",
+          "tableFrom": "Suggestion",
+          "tableTo": "Document",
+          "columnsFrom": [
+            "documentId",
+            "documentCreatedAt"
+          ],
+          "columnsTo": [
+            "id",
+            "createdAt"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Suggestion_id_pk": {
+          "name": "Suggestion_id_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.User": {
+      "name": "User",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(64)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.HMIS_User": {
+      "name": "HMIS_User",
+      "schema": "",
+      "columns": {
+        "UserID": {
+          "name": "UserID",
+          "type": "integer",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "UserFirstName": {
+          "name": "UserFirstName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserLastName": {
+          "name": "UserLastName",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserPhone": {
+          "name": "UserPhone",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserExtension": {
+          "name": "UserExtension",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "UserEmail": {
+          "name": "UserEmail",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateCreated": {
+          "name": "DateCreated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateUpdated": {
+          "name": "DateUpdated",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "DateDeleted": {
+          "name": "DateDeleted",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "ExportID": {
+          "name": "ExportID",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "user_export_id_idx": {
+          "name": "user_export_id_idx",
+          "columns": [
+            {
+              "expression": "ExportID",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.Vote_v2": {
+      "name": "Vote_v2",
+      "schema": "",
+      "columns": {
+        "chatId": {
+          "name": "chatId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "messageId": {
+          "name": "messageId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "isUpvoted": {
+          "name": "isUpvoted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Vote_v2_chatId_Chat_id_fk": {
+          "name": "Vote_v2_chatId_Chat_id_fk",
+          "tableFrom": "Vote_v2",
+          "tableTo": "Chat",
+          "columnsFrom": [
+            "chatId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Vote_v2_messageId_Message_v2_id_fk": {
+          "name": "Vote_v2_messageId_Message_v2_id_fk",
+          "tableFrom": "Vote_v2",
+          "tableTo": "Message_v2",
+          "columnsFrom": [
+            "messageId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Vote_v2_chatId_messageId_pk": {
+          "name": "Vote_v2_chatId_messageId_pk",
+          "columns": [
+            "chatId",
+            "messageId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    },
+    "public.Vote": {
+      "name": "Vote",
+      "schema": "",
+      "columns": {
+        "chatId": {
+          "name": "chatId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "messageId": {
+          "name": "messageId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "isUpvoted": {
+          "name": "isUpvoted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "Vote_chatId_Chat_id_fk": {
+          "name": "Vote_chatId_Chat_id_fk",
+          "tableFrom": "Vote",
+          "tableTo": "Chat",
+          "columnsFrom": [
+            "chatId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "Vote_messageId_Message_id_fk": {
+          "name": "Vote_messageId_Message_id_fk",
+          "tableFrom": "Vote",
+          "tableTo": "Message",
+          "columnsFrom": [
+            "messageId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "Vote_chatId_messageId_pk": {
+          "name": "Vote_chatId_messageId_pk",
+          "columns": [
+            "chatId",
+            "messageId"
+          ]
+        }
+      },
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

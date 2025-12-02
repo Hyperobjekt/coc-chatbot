@@ -196,7 +196,7 @@ export const project = pgTable("Project", {
   OperatingStartDate: text("OperatingStartDate"),
   OperatingEndDate: text("OperatingEndDate"),
   ContinuumProject: integer("ContinuumProject"),
-  ProjectType: integer("ProjectType"),
+  ProjectType: integer("ProjectType").references(() => projectTypeLookup.Code),
   HousingType: integer("HousingType"),
   RRHSubType: integer("RRHSubType"),
   ResidentialAffiliation: integer("ResidentialAffiliation"),
@@ -272,7 +272,7 @@ export const enrollment = pgTable("Enrollment", {
   HouseholdID: text("HouseholdID"),
   RelationshipToHoH: integer("RelationshipToHoH"),
   EnrollmentCoC: text("EnrollmentCoC"),
-  LivingSituation: integer("LivingSituation"),
+  LivingSituation: integer("LivingSituation").references(() => livingSituationLookup.Code),
   RentalSubsidyType: integer("RentalSubsidyType"),
   LengthOfStay: integer("LengthOfStay"),
   LOSUnderThreshold: integer("LOSUnderThreshold"),
@@ -318,7 +318,7 @@ export const exit = pgTable("Exit", {
   EnrollmentID: integer("EnrollmentID").references(() => enrollment.EnrollmentID),
   PersonalID: integer("PersonalID").references(() => client.PersonalID),
   ExitDate: text("ExitDate"),
-  Destination: integer("Destination"),
+  Destination: integer("Destination").references(() => destinationLookup.Code),
   DestinationSubsidyType: integer("DestinationSubsidyType"),
   OtherDestination: text("OtherDestination"),
   HousingAssessment: integer("HousingAssessment"),
@@ -658,7 +658,12 @@ export const export_ = pgTable("Export", {
   ExportDirective: integer("ExportDirective"),
   HashStatus: integer("HashStatus"),
   ImplementationID: integer("ImplementationID"),
-});
+}, (table) => ({
+  exportIdIdx: index("export_id_idx").on(table.ExportID),
+}));
+
+// Alias for CSV loading
+export const Export = export_;
 
 export const hmisParticipation = pgTable("HMISParticipation", {
   HMISParticipationID: integer("HMISParticipationID").primaryKey(),
@@ -676,6 +681,29 @@ export const hmisParticipation = pgTable("HMISParticipation", {
   exportIdIdx: index("hmis_participation_export_id_idx").on(table.ExportID),
   startDateIdx: index("hmis_participation_start_date_idx").on(table.HMISParticipationStatusStartDate),
   endDateIdx: index("hmis_participation_end_date_idx").on(table.HMISParticipationStatusEndDate),
+}));
+
+export const ceParticipation = pgTable("CEParticipation", {
+  CEParticipationID: integer("CEParticipationID").primaryKey(),
+  ProjectID: integer("ProjectID").references(() => project.ProjectID),
+  AccessPoint: integer("AccessPoint"),
+  PreventionAssessment: integer("PreventionAssessment"),
+  CrisisAssessment: integer("CrisisAssessment"),
+  HousingAssessment: integer("HousingAssessment"),
+  DirectServices: integer("DirectServices"),
+  ReceivesReferrals: integer("ReceivesReferrals"),
+  CEParticipationStatusStartDate: text("CEParticipationStatusStartDate"),
+  CEParticipationStatusEndDate: text("CEParticipationStatusEndDate"),
+  DateCreated: text("DateCreated"),
+  DateUpdated: text("DateUpdated"),
+  UserID: integer("UserID"),
+  DateDeleted: text("DateDeleted"),
+  ExportID: integer("ExportID"),
+}, (table) => ({
+  projectIdIdx: index("ce_participation_project_id_idx").on(table.ProjectID),
+  exportIdIdx: index("ce_participation_export_id_idx").on(table.ExportID),
+  startDateIdx: index("ce_participation_start_date_idx").on(table.CEParticipationStatusStartDate),
+  endDateIdx: index("ce_participation_end_date_idx").on(table.CEParticipationStatusEndDate),
 }));
 
 export const funder = pgTable("Funder", {
@@ -718,4 +746,55 @@ export type Inventory = InferSelectModel<typeof inventory>;
 export type Export = InferSelectModel<typeof export_>;
 export type HMISParticipation = InferSelectModel<typeof hmisParticipation>;
 export type Funder = InferSelectModel<typeof funder>;
+// Lookup Tables
+export const livingSituationLookup = pgTable("LivingSituationLookup", {
+  Code: integer("Code").primaryKey(),
+  Category: text("Category").notNull(),
+  Description: text("Description").notNull(),
+});
+
+export const projectTypeLookup = pgTable("ProjectTypeLookup", {
+  Code: integer("Code").primaryKey(),
+  Description: text("Description").notNull(),
+});
+
+export const destinationLookup = pgTable("DestinationLookup", {
+  Code: integer("Code").primaryKey(),
+  Category: text("Category").notNull(),
+  Description: text("Description").notNull(),
+});
+
+export const housingStatusLookup = pgTable("HousingStatusLookup", {
+  Code: integer("Code").primaryKey(),
+  Description: text("Description").notNull(),
+});
+
+export type LivingSituationLookup = InferSelectModel<typeof livingSituationLookup>;
+export type ProjectTypeLookup = InferSelectModel<typeof projectTypeLookup>;
+export type DestinationLookup = InferSelectModel<typeof destinationLookup>;
+export type HousingStatusLookup = InferSelectModel<typeof housingStatusLookup>;
+
+export const youthEducationStatus = pgTable("YouthEducationStatus", {
+  YouthEducationStatusID: text("YouthEducationStatusID").primaryKey(),
+  EnrollmentID: integer("EnrollmentID").references(() => enrollment.EnrollmentID),
+  PersonalID: integer("PersonalID").references(() => client.PersonalID),
+  InformationDate: text("InformationDate"),
+  CurrentSchoolAttend: integer("CurrentSchoolAttend"),
+  MostRecentEdStatus: integer("MostRecentEdStatus"),
+  CurrentEdStatus: integer("CurrentEdStatus"),
+  DataCollectionStage: integer("DataCollectionStage"),
+  DateCreated: text("DateCreated"),
+  DateUpdated: text("DateUpdated"),
+  UserID: integer("UserID"),
+  DateDeleted: text("DateDeleted"),
+  ExportID: integer("ExportID"),
+}, (table) => ({
+  enrollmentIdIdx: index("youth_education_status_enrollment_id_idx").on(table.EnrollmentID),
+  personalIdIdx: index("youth_education_status_personal_id_idx").on(table.PersonalID),
+  exportIdIdx: index("youth_education_status_export_id_idx").on(table.ExportID),
+  informationDateIdx: index("youth_education_status_information_date_idx").on(table.InformationDate),
+}));
+
 export type HMISUser = InferSelectModel<typeof user_>;
+export type CEParticipation = InferSelectModel<typeof ceParticipation>;
+export type YouthEducationStatus = InferSelectModel<typeof youthEducationStatus>;

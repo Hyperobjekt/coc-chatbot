@@ -1,5 +1,87 @@
 [
   {
+    "name": "Export",
+    "columns": [
+      {
+        "name": "ExportID",
+        "type": "integer"
+      },
+      {
+        "name": "SourceType",
+        "type": "integer"
+      },
+      {
+        "name": "SourceID",
+        "type": "text"
+      },
+      {
+        "name": "SourceName",
+        "type": "text"
+      },
+      {
+        "name": "SourceContactFirst",
+        "type": "text"
+      },
+      {
+        "name": "SourceContactLast",
+        "type": "text"
+      },
+      {
+        "name": "SourceContactPhone",
+        "type": "text"
+      },
+      {
+        "name": "SourceContactExtension",
+        "type": "text"
+      },
+      {
+        "name": "SourceContactEmail",
+        "type": "text"
+      },
+      {
+        "name": "ExportDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "ExportStartDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "ExportEndDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "SoftwareName",
+        "type": "text"
+      },
+      {
+        "name": "SoftwareVersion",
+        "type": "numeric"
+      },
+      {
+        "name": "CSVVersion",
+        "type": "text"
+      },
+      {
+        "name": "ExportPeriodType",
+        "type": "integer"
+      },
+      {
+        "name": "ExportDirective",
+        "type": "integer"
+      },
+      {
+        "name": "HashStatus",
+        "type": "integer"
+      },
+      {
+        "name": "ImplementationID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 1
+  },
+  {
     "name": "Organization",
     "columns": [
       {
@@ -122,6 +204,72 @@
       }
     ],
     "rowCount": 27
+  },
+  {
+    "name": "CEParticipation",
+    "columns": [
+      {
+        "name": "CEParticipationID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "AccessPoint",
+        "type": "integer"
+      },
+      {
+        "name": "PreventionAssessment",
+        "type": "integer"
+      },
+      {
+        "name": "CrisisAssessment",
+        "type": "integer"
+      },
+      {
+        "name": "HousingAssessment",
+        "type": "integer"
+      },
+      {
+        "name": "DirectServices",
+        "type": "integer"
+      },
+      {
+        "name": "ReceivesReferrals",
+        "type": "integer"
+      },
+      {
+        "name": "CEParticipationStatusStartDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "CEParticipationStatusEndDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 26
   },
   {
     "name": "Client",
@@ -1828,5 +1976,63 @@
       }
     ],
     "rowCount": 1
+  },
+  {
+    "name": "YouthEducationStatus",
+    "columns": [
+      {
+        "name": "YouthEducationStatusID",
+        "type": "text"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "InformationDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "CurrentSchoolAttend",
+        "type": "text"
+      },
+      {
+        "name": "MostRecentEdStatus",
+        "type": "text"
+      },
+      {
+        "name": "CurrentEdStatus",
+        "type": "text"
+      },
+      {
+        "name": "DataCollectionStage",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 5637
   }
 ]

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { queryData } from "./query-data";
 
 export const queryDataSchema = z.object({
-  sql: z.string().describe("SQLite-compatible SQL query"),
+  sql: z.string().describe("PostgreSQL-compatible SQL query"),
   explanation: z.string().optional().describe("What this query does")
 });
 

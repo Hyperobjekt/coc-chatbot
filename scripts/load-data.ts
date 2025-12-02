@@ -12,6 +12,105 @@ config({
   path: ".env.local",
 });
 
+// Lookup table data
+const livingSituations = [
+    // Emergency Shelter/Safe Haven (1-99)
+    { Code: 8, Category: "Emergency Shelter", Description: "Emergency shelter" },
+    { Code: 9, Category: "Safe Haven", Description: "Safe Haven" },
+
+    // Homeless Situations (100-199)
+    { Code: 116, Category: "Homeless", Description: "Place not meant for habitation" },
+    { Code: 101, Category: "Homeless", Description: "Emergency shelter, including hotel/motel paid with voucher" },
+    { Code: 118, Category: "Homeless", Description: "Safe Haven" },
+    
+    // Institutional Situations (200-299)
+    { Code: 204, Category: "Institutional", Description: "Psychiatric hospital or facility" },
+    { Code: 205, Category: "Institutional", Description: "Substance abuse treatment facility" },
+    { Code: 206, Category: "Institutional", Description: "Hospital" },
+    { Code: 207, Category: "Institutional", Description: "Jail, prison or juvenile detention" },
+    { Code: 215, Category: "Institutional", Description: "Foster care home" },
+    { Code: 225, Category: "Institutional", Description: "Long-term care facility" },
+    
+    // Temporary Housing (300-399)
+    { Code: 302, Category: "Temporary", Description: "Transitional housing" },
+    { Code: 314, Category: "Temporary", Description: "Hotel/motel without voucher" },
+    { Code: 329, Category: "Temporary", Description: "Residential program" },
+    { Code: 332, Category: "Temporary", Description: "Host home" },
+    { Code: 335, Category: "Temporary", Description: "Staying with family, temporary" },
+    { Code: 336, Category: "Temporary", Description: "Staying with friends, temporary" },
+    
+    // Permanent Housing (400-499)
+    { Code: 410, Category: "Permanent", Description: "Rental by client, no subsidy" },
+    { Code: 411, Category: "Permanent", Description: "Rental by client, with subsidy" },
+    { Code: 421, Category: "Permanent", Description: "Owned by client" },
+    { Code: 435, Category: "Permanent", Description: "Permanent housing" }
+];
+
+const projectTypes = [
+    { Code: 0, Description: "Emergency Shelter - Entry Exit" },
+    { Code: 1, Description: "Emergency Shelter - Night-by-Night" },
+    { Code: 2, Description: "Transitional Housing" },
+    { Code: 3, Description: "PH - Permanent Supportive Housing" },
+    { Code: 4, Description: "Street Outreach" },
+    { Code: 6, Description: "Services Only" },
+    { Code: 7, Description: "Other" },
+    { Code: 8, Description: "Safe Haven" },
+    { Code: 9, Description: "PH - Housing Only" },
+    { Code: 10, Description: "PH - Housing with Services" },
+    { Code: 11, Description: "Day Shelter" },
+    { Code: 12, Description: "Homelessness Prevention" },
+    { Code: 13, Description: "PH - Rapid Re-Housing" },
+    { Code: 14, Description: "Coordinated Entry" }
+];
+
+const destinations = [
+    // Emergency Shelter/Safe Haven (1-99)
+    { Code: 8, Category: "Emergency Shelter", Description: "Emergency shelter" },
+    { Code: 9, Category: "Safe Haven", Description: "Safe Haven" },
+    { Code: 17, Category: "Other", Description: "Other" },
+    { Code: 24, Category: "Deceased", Description: "Deceased" },
+    { Code: 30, Category: "Unknown", Description: "No exit interview completed" },
+    { Code: 99, Category: "Unknown", Description: "Unknown/disappeared" },
+
+    // Homeless Situations (100-199)
+    { Code: 116, Category: "Homeless", Description: "Place not meant for habitation" },
+    { Code: 101, Category: "Homeless", Description: "Emergency shelter" },
+    { Code: 118, Category: "Homeless", Description: "Safe Haven" },
+    
+    // Institutional Settings (200-299)
+    { Code: 204, Category: "Institutional", Description: "Psychiatric hospital" },
+    { Code: 205, Category: "Institutional", Description: "Substance abuse facility" },
+    { Code: 206, Category: "Institutional", Description: "Hospital" },
+    { Code: 207, Category: "Institutional", Description: "Jail/prison" },
+    { Code: 215, Category: "Institutional", Description: "Foster care" },
+    { Code: 225, Category: "Institutional", Description: "Long-term care facility" },
+    
+    // Temporary Settings (300-399)
+    { Code: 302, Category: "Temporary", Description: "Transitional housing" },
+    { Code: 312, Category: "Temporary", Description: "Staying with family, temporary" },
+    { Code: 313, Category: "Temporary", Description: "Staying with friends, temporary" },
+    { Code: 314, Category: "Temporary", Description: "Hotel/motel without voucher" },
+    { Code: 329, Category: "Temporary", Description: "Residential program" },
+    { Code: 332, Category: "Temporary", Description: "Host home" },
+    
+    // Permanent Settings (400-499)
+    { Code: 410, Category: "Permanent", Description: "Rental by client, no subsidy" },
+    { Code: 411, Category: "Permanent", Description: "Rental by client, with subsidy" },
+    { Code: 421, Category: "Permanent", Description: "Owned by client" },
+    { Code: 422, Category: "Permanent", Description: "Owned by client, with subsidy" },
+    { Code: 423, Category: "Permanent", Description: "Long-term rental assistance" },
+    { Code: 435, Category: "Permanent", Description: "Permanent housing" }
+];
+
+const housingStatuses = [
+    { Code: 1, Description: "Category 1 - Literally Homeless" },
+    { Code: 2, Description: "Category 2 - Imminent Risk of Homelessness" },
+    { Code: 3, Description: "Category 3 - Homeless under other Federal statutes" },
+    { Code: 4, Description: "Category 4 - Fleeing domestic violence" },
+    { Code: 5, Description: "At-risk of homelessness" },
+    { Code: 6, Description: "Stably housed" }
+];
+
 const DATA_DIR = path.join(process.cwd(), 'data');
 const SCHEMA_PATH = path.join(process.cwd(), 'schema.json');
 const DOCS_PATH = path.join(process.cwd(), 'documentation.txt');
@@ -144,6 +243,36 @@ async function extractPDFText(pdfPath: string): Promise<string> {
   return result.text;
 }
 
+async function seedLookupTables(db: ReturnType<typeof drizzle>) {
+  console.log('\n📋 Seeding lookup tables...');
+
+  // Insert living situations
+  console.log('  Inserting living situations...');
+  for (const situation of livingSituations) {
+    await db.insert(schema.livingSituationLookup).values(situation).onConflictDoNothing();
+  }
+
+  // Insert project types
+  console.log('  Inserting project types...');
+  for (const type of projectTypes) {
+    await db.insert(schema.projectTypeLookup).values(type).onConflictDoNothing();
+  }
+
+  // Insert destinations
+  console.log('  Inserting destinations...');
+  for (const destination of destinations) {
+    await db.insert(schema.destinationLookup).values(destination).onConflictDoNothing();
+  }
+
+  // Insert housing statuses
+  console.log('  Inserting housing statuses...');
+  for (const status of housingStatuses) {
+    await db.insert(schema.housingStatusLookup).values(status).onConflictDoNothing();
+  }
+
+  console.log('✓ Lookup tables seeded successfully!\n');
+}
+
 async function main() {
   console.log('🚀 Starting data loading...\n');
   
@@ -154,12 +283,16 @@ async function main() {
   // Initialize database connection
   const connection = postgres(process.env.POSTGRES_URL);
   const db = drizzle(connection);
+
+  // Seed lookup tables first
+  await seedLookupTables(db);
   
   // Load CSVs in correct order based on dependencies
   const loadOrder = [
     'Export',
     'Organization',
     'Project',
+    'CEParticipation',
     'Client',
     'Enrollment',
     'Assessment',

@@ -85,6 +85,27 @@
       "when": 1764675749767,
       "tag": "0011_fixed_nehzno",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1764687953468,
+      "tag": "0012_aberrant_elektra",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1764691364989,
+      "tag": "0013_stale_archangel",
+      "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "7",
+      "when": 1764694267549,
+      "tag": "0014_heavy_iron_fist",
+      "breakpoints": true
     }
   ]
 }

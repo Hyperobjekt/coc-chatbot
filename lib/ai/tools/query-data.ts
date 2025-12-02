@@ -43,7 +43,17 @@ export async function queryData({ sql, explanation }: QueryDataParams) {
     return formattedResults;
   } catch (error) {
     if (error instanceof Error) {
-      throw new Error(`Query failed: ${error.message}`);
+      // Extract useful info from common Postgres errors
+      const msg = error.message;
+      if (msg.includes('relation') && msg.includes('does not exist')) {
+        throw new Error(`Table not found - check table name and case sensitivity. PostgreSQL error: ${msg}`);
+      } else if (msg.includes('column') && msg.includes('does not exist')) {
+        throw new Error(`Column not found - check column name and case sensitivity. PostgreSQL error: ${msg}`);
+      } else if (msg.includes('syntax error')) {
+        throw new Error(`SQL syntax error - ensure you're using PostgreSQL syntax. PostgreSQL error: ${msg}`);
+      } else {
+        throw new Error(`Query failed: ${msg}`);
+      }
     }
     throw new Error('Query failed: Unknown error');
   }
