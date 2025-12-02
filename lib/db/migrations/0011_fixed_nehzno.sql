@@ -1,0 +1,1 @@
+ALTER TABLE "HMIS_User" ALTER COLUMN "UserPhone" SET DATA TYPE text;

@@ -1,0 +1,25 @@
+ALTER TABLE "Assessment" ALTER COLUMN "AssessmentDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Client" ALTER COLUMN "DOB" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Enrollment" ALTER COLUMN "DateToStreetESSH" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Enrollment" ALTER COLUMN "DateOfEngagement" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Enrollment" ALTER COLUMN "MoveInDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Enrollment" ALTER COLUMN "DateOfPATHStatus" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Exit" ALTER COLUMN "ExitDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Exit" ALTER COLUMN "AftercareDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Export" ALTER COLUMN "ExportDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Export" ALTER COLUMN "ExportStartDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Export" ALTER COLUMN "ExportEndDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Funder" ALTER COLUMN "StartDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Funder" ALTER COLUMN "EndDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HealthAndDV" ALTER COLUMN "InformationDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HealthAndDV" ALTER COLUMN "DueDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HMISParticipation" ALTER COLUMN "HMISParticipationStatusStartDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HMISParticipation" ALTER COLUMN "HMISParticipationStatusEndDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Inventory" ALTER COLUMN "InventoryStartDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Inventory" ALTER COLUMN "InventoryEndDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Project" ALTER COLUMN "OperatingStartDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Project" ALTER COLUMN "OperatingEndDate" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "Services" ALTER COLUMN "DateProvided" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HMIS_User" ALTER COLUMN "DateCreated" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HMIS_User" ALTER COLUMN "DateUpdated" SET DATA TYPE text;--> statement-breakpoint
+ALTER TABLE "HMIS_User" ALTER COLUMN "DateDeleted" SET DATA TYPE text;

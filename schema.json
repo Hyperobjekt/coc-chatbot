@@ -1,1706 +1,42 @@
 [
   {
-    "name": "Assessment",
-    "columns": [
-      {
-        "name": "AssessmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AssessmentDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "AssessmentLocation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AssessmentType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AssessmentLevel",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PrioritizationStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 78
-  },
-  {
-    "name": "CEParticipation",
-    "columns": [
-      {
-        "name": "CEParticipationID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AccessPoint",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PreventionAssessment",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CrisisAssessment",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HousingAssessment",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DirectServices",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ReceivesReferrals",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CEParticipationStatusStartDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "CEParticipationStatusEndDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 26
-  },
-  {
-    "name": "Client",
-    "columns": [
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "FirstName",
-        "type": "TEXT"
-      },
-      {
-        "name": "MiddleName",
-        "type": "TEXT"
-      },
-      {
-        "name": "LastName",
-        "type": "TEXT"
-      },
-      {
-        "name": "NameSuffix",
-        "type": "TEXT"
-      },
-      {
-        "name": "NameDataQuality",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SSN",
-        "type": "TEXT"
-      },
-      {
-        "name": "SSNDataQuality",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DOB",
-        "type": "TEXT"
-      },
-      {
-        "name": "DOBDataQuality",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AmIndAKNative",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Asian",
-        "type": "INTEGER"
-      },
-      {
-        "name": "BlackAfAmerican",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HispanicLatinaeo",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MidEastNAfrican",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NativeHIPacific",
-        "type": "INTEGER"
-      },
-      {
-        "name": "White",
-        "type": "INTEGER"
-      },
-      {
-        "name": "RaceNone",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AdditionalRaceEthnicity",
-        "type": "TEXT"
-      },
-      {
-        "name": "Woman",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Man",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NonBinary",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CulturallySpecific",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Transgender",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Questioning",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DifferentIdentity",
-        "type": "INTEGER"
-      },
-      {
-        "name": "GenderNone",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DifferentIdentityText",
-        "type": "TEXT"
-      },
-      {
-        "name": "VeteranStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "YearEnteredService",
-        "type": "INTEGER"
-      },
-      {
-        "name": "YearSeparated",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WorldWarII",
-        "type": "INTEGER"
-      },
-      {
-        "name": "KoreanWar",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VietnamWar",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DesertStorm",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AfghanistanOEF",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IraqOIF",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IraqOND",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherTheater",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MilitaryBranch",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DischargeStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 4146
-  },
-  {
-    "name": "CurrentLivingSituation",
-    "columns": [
-      {
-        "name": "CurrentLivingSitID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InformationDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "CurrentLivingSituation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CLSSubsidyType",
-        "type": "TEXT"
-      },
-      {
-        "name": "VerifiedBy",
-        "type": "TEXT"
-      },
-      {
-        "name": "LeaveSituation14Days",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SubsequentResidence",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ResourcesToObtain",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LeaseOwn60Day",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MovedTwoOrMore",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LocationDetails",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 336
-  },
-  {
-    "name": "EmploymentEducation",
-    "columns": [
-      {
-        "name": "EmploymentEducationID",
-        "type": "TEXT"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InformationDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "LastGradeCompleted",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SchoolStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Employed",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EmploymentType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NotEmployedReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DataCollectionStage",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 9623
-  },
-  {
-    "name": "Enrollment",
-    "columns": [
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EntryDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "HouseholdID",
-        "type": "TEXT"
-      },
-      {
-        "name": "RelationshipToHoH",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EnrollmentCoC",
-        "type": "TEXT"
-      },
-      {
-        "name": "LivingSituation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "RentalSubsidyType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LengthOfStay",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LOSUnderThreshold",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PreviousStreetESSH",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateToStreetESSH",
-        "type": "TEXT"
-      },
-      {
-        "name": "TimesHomelessPastThreeYears",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MonthsHomelessPastThreeYears",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DisablingCondition",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateOfEngagement",
-        "type": "TEXT"
-      },
-      {
-        "name": "MoveInDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateOfPATHStatus",
-        "type": "TEXT"
-      },
-      {
-        "name": "ClientEnrolledInPATH",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ReasonNotEnrolled",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PercentAMI",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ReferralSource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CountOutreachReferralApproaches",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateOfBCPStatus",
-        "type": "TEXT"
-      },
-      {
-        "name": "EligibleForRHY",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ReasonNoServices",
-        "type": "INTEGER"
-      },
-      {
-        "name": "RunawayYouth",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SexualOrientation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SexualOrientationOther",
-        "type": "TEXT"
-      },
-      {
-        "name": "FormerWardChildWelfare",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ChildWelfareYears",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ChildWelfareMonths",
-        "type": "INTEGER"
-      },
-      {
-        "name": "FormerWardJuvenileJustice",
-        "type": "INTEGER"
-      },
-      {
-        "name": "JuvenileJusticeYears",
-        "type": "INTEGER"
-      },
-      {
-        "name": "JuvenileJusticeMonths",
-        "type": "INTEGER"
-      },
-      {
-        "name": "UnemploymentFam",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MentalHealthDisorderFam",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PhysicalDisabilityFam",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AlcoholDrugUseDisorderFam",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InsufficientIncome",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IncarceratedParent",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VAMCStation",
-        "type": "TEXT"
-      },
-      {
-        "name": "TargetScreenReqd",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TimeToHousingLoss",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AnnualPercentAMI",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LiteralHomelessHistory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ClientLeaseholder",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HOHLeaseholder",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SubsidyAtRisk",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EvictionHistory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CriminalRecord",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IncarceratedAdult",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PrisonDischarge",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SexOffender",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DisabledHoH",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CurrentPregnant",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SingleParent",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DependentUnder6",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HH5Plus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CoCPrioritized",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HPScreeningScore",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ThresholdScore",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TranslationNeeded",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PreferredLanguage",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PreferredLanguageDifferent",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 4771
-  },
-  {
-    "name": "Event",
-    "columns": [
-      {
-        "name": "EventID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EventDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "Event",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProbSolDivRRResult",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ReferralCaseManageAfter",
-        "type": "INTEGER"
-      },
-      {
-        "name": "LocationCrisisOrPHHousing",
-        "type": "TEXT"
-      },
-      {
-        "name": "ReferralResult",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ResultDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 168
-  },
-  {
-    "name": "Exit",
-    "columns": [
-      {
-        "name": "ExitID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ExitDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "Destination",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DestinationSubsidyType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherDestination",
-        "type": "TEXT"
-      },
-      {
-        "name": "HousingAssessment",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SubsidyInformation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectCompletionStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EarlyExitReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ExchangeForSex",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ExchangeForSexPastThreeMonths",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CountOfExchangeForSex",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AskedOrForcedToExchangeForSex",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AskedOrForcedToExchangeForSexPastThreeMonths",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WorkplaceViolenceThreats",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WorkplacePromiseDifference",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CoercedToContinueWork",
-        "type": "TEXT"
-      },
-      {
-        "name": "LaborExploitPastThreeMonths",
-        "type": "TEXT"
-      },
-      {
-        "name": "CounselingReceived",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IndividualCounseling",
-        "type": "INTEGER"
-      },
-      {
-        "name": "FamilyCounseling",
-        "type": "INTEGER"
-      },
-      {
-        "name": "GroupCounseling",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SessionCountAtExit",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PostExitCounselingPlan",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SessionsInPlan",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DestinationSafeClient",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DestinationSafeWorker",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PosAdultConnections",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PosPeerConnections",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PosCommunityConnections",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AftercareDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "AftercareProvided",
-        "type": "TEXT"
-      },
-      {
-        "name": "EmailSocialMedia",
-        "type": "TEXT"
-      },
-      {
-        "name": "Telephone",
-        "type": "TEXT"
-      },
-      {
-        "name": "InPersonIndividual",
-        "type": "TEXT"
-      },
-      {
-        "name": "InPersonGroup",
-        "type": "TEXT"
-      },
-      {
-        "name": "CMExitReason",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 4295
-  },
-  {
-    "name": "Export",
-    "columns": [
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SourceType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SourceID",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceName",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceContactFirst",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceContactLast",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceContactPhone",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceContactExtension",
-        "type": "TEXT"
-      },
-      {
-        "name": "SourceContactEmail",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportStartDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportEndDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "SoftwareName",
-        "type": "TEXT"
-      },
-      {
-        "name": "SoftwareVersion",
-        "type": "REAL"
-      },
-      {
-        "name": "CSVVersion",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportPeriodType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ExportDirective",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HashStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ImplementationID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 1
-  },
-  {
-    "name": "Funder",
-    "columns": [
-      {
-        "name": "FunderID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Funder",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherFunder",
-        "type": "TEXT"
-      },
-      {
-        "name": "GrantID",
-        "type": "TEXT"
-      },
-      {
-        "name": "StartDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "EndDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 59
-  },
-  {
-    "name": "HMISParticipation",
-    "columns": [
-      {
-        "name": "HMISParticipationID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HMISParticipationType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "HMISParticipationStatusStartDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "HMISParticipationStatusEndDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 26
-  },
-  {
-    "name": "HealthAndDV",
-    "columns": [
-      {
-        "name": "HealthAndDVID",
-        "type": "TEXT"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InformationDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DomesticViolenceSurvivor",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WhenOccurred",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CurrentlyFleeing",
-        "type": "INTEGER"
-      },
-      {
-        "name": "GeneralHealthStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DentalHealthStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "MentalHealthStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PregnancyStatus",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DueDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DataCollectionStage",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 9623
-  },
-  {
-    "name": "IncomeBenefits",
-    "columns": [
-      {
-        "name": "IncomeBenefitsID",
-        "type": "TEXT"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InformationDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "IncomeFromAnySource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TotalMonthlyIncome",
-        "type": "REAL"
-      },
-      {
-        "name": "Earned",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EarnedAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "Unemployment",
-        "type": "INTEGER"
-      },
-      {
-        "name": "UnemploymentAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "SSI",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SSIAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "SSDI",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SSDIAmount",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VADisabilityService",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VADisabilityServiceAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "VADisabilityNonService",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VADisabilityNonServiceAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "PrivateDisability",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PrivateDisabilityAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "WorkersComp",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WorkersCompAmount",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TANF",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TANFAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "GA",
-        "type": "INTEGER"
-      },
-      {
-        "name": "GAAmount",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SocSecRetirement",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SocSecRetirementAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "Pension",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PensionAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "ChildSupport",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ChildSupportAmount",
-        "type": "REAL"
-      },
-      {
-        "name": "Alimony",
-        "type": "INTEGER"
-      },
-      {
-        "name": "AlimonyAmount",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherIncomeSource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherIncomeAmount",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherIncomeSourceIdentify",
-        "type": "TEXT"
-      },
-      {
-        "name": "BenefitsFromAnySource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SNAP",
-        "type": "INTEGER"
-      },
-      {
-        "name": "WIC",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TANFChildCare",
-        "type": "INTEGER"
-      },
-      {
-        "name": "TANFTransportation",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherTANF",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherBenefitsSource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherBenefitsSourceIdentify",
-        "type": "TEXT"
-      },
-      {
-        "name": "InsuranceFromAnySource",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Medicaid",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoMedicaidReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Medicare",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoMedicareReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "SCHIP",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoSCHIPReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VHAServices",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoVHAReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "EmployerProvided",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoEmployerProvidedReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "COBRA",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoCOBRAReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PrivatePay",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoPrivatePayReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "StateHealthIns",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoStateHealthInsReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "IndianHealthServices",
-        "type": "INTEGER"
-      },
-      {
-        "name": "NoIndianHealthServicesReason",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherInsurance",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherInsuranceIdentify",
-        "type": "TEXT"
-      },
-      {
-        "name": "ADAP",
-        "type": "TEXT"
-      },
-      {
-        "name": "NoADAPReason",
-        "type": "TEXT"
-      },
-      {
-        "name": "RyanWhiteMedDent",
-        "type": "TEXT"
-      },
-      {
-        "name": "NoRyanWhiteReason",
-        "type": "TEXT"
-      },
-      {
-        "name": "ConnectionWithSOAR",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DataCollectionStage",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 9623
-  },
-  {
-    "name": "Inventory",
-    "columns": [
-      {
-        "name": "InventoryID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ProjectID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CoCCode",
-        "type": "TEXT"
-      },
-      {
-        "name": "HouseholdType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "Availability",
-        "type": "INTEGER"
-      },
-      {
-        "name": "UnitInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "BedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CHVetBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "YouthVetBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "VetBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CHYouthBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "YouthBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "CHBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "OtherBedInventory",
-        "type": "INTEGER"
-      },
-      {
-        "name": "ESBedType",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InventoryStartDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "InventoryEndDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 81
-  },
-  {
     "name": "Organization",
     "columns": [
       {
         "name": "OrganizationID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "OrganizationName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "VictimServiceProvider",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "OrganizationCommonName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "DateCreated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateUpdated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "UserID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "DateDeleted",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ExportID",
-        "type": "INTEGER"
+        "type": "integer"
       }
     ],
     "rowCount": 3
@@ -1710,329 +46,1787 @@
     "columns": [
       {
         "name": "ProjectID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "OrganizationID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "ProjectName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ProjectCommonName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "OperatingStartDate",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "OperatingEndDate",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "ContinuumProject",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "ProjectType",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "HousingType",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "RRHSubType",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "ResidentialAffiliation",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "TargetPopulation",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "HOPWAMedAssistedLivingFac",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "PITCount",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "DateCreated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateUpdated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "UserID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "DateDeleted",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ExportID",
-        "type": "INTEGER"
+        "type": "integer"
       }
     ],
     "rowCount": 27
   },
   {
-    "name": "ProjectCoC",
+    "name": "Client",
     "columns": [
       {
-        "name": "ProjectCoCID",
-        "type": "INTEGER"
+        "name": "PersonalID",
+        "type": "integer"
       },
       {
-        "name": "ProjectID",
-        "type": "INTEGER"
+        "name": "FirstName",
+        "type": "text"
       },
       {
-        "name": "CoCCode",
-        "type": "TEXT"
+        "name": "MiddleName",
+        "type": "text"
       },
       {
-        "name": "Geocode",
-        "type": "INTEGER"
+        "name": "LastName",
+        "type": "text"
       },
       {
-        "name": "Address1",
-        "type": "TEXT"
+        "name": "NameSuffix",
+        "type": "text"
       },
       {
-        "name": "Address2",
-        "type": "TEXT"
+        "name": "NameDataQuality",
+        "type": "integer"
       },
       {
-        "name": "City",
-        "type": "TEXT"
+        "name": "SSN",
+        "type": "text"
       },
       {
-        "name": "State",
-        "type": "TEXT"
+        "name": "SSNDataQuality",
+        "type": "integer"
       },
       {
-        "name": "ZIP",
-        "type": "INTEGER"
+        "name": "DOB",
+        "type": "timestamp"
       },
       {
-        "name": "GeographyType",
-        "type": "INTEGER"
+        "name": "DOBDataQuality",
+        "type": "integer"
+      },
+      {
+        "name": "AmIndAKNative",
+        "type": "integer"
+      },
+      {
+        "name": "Asian",
+        "type": "integer"
+      },
+      {
+        "name": "BlackAfAmerican",
+        "type": "integer"
+      },
+      {
+        "name": "HispanicLatinaeo",
+        "type": "integer"
+      },
+      {
+        "name": "MidEastNAfrican",
+        "type": "integer"
+      },
+      {
+        "name": "NativeHIPacific",
+        "type": "integer"
+      },
+      {
+        "name": "White",
+        "type": "integer"
+      },
+      {
+        "name": "RaceNone",
+        "type": "integer"
+      },
+      {
+        "name": "AdditionalRaceEthnicity",
+        "type": "text"
+      },
+      {
+        "name": "Woman",
+        "type": "integer"
+      },
+      {
+        "name": "Man",
+        "type": "integer"
+      },
+      {
+        "name": "NonBinary",
+        "type": "integer"
+      },
+      {
+        "name": "CulturallySpecific",
+        "type": "integer"
+      },
+      {
+        "name": "Transgender",
+        "type": "integer"
+      },
+      {
+        "name": "Questioning",
+        "type": "integer"
+      },
+      {
+        "name": "DifferentIdentity",
+        "type": "integer"
+      },
+      {
+        "name": "GenderNone",
+        "type": "integer"
+      },
+      {
+        "name": "DifferentIdentityText",
+        "type": "text"
+      },
+      {
+        "name": "VeteranStatus",
+        "type": "integer"
+      },
+      {
+        "name": "YearEnteredService",
+        "type": "integer"
+      },
+      {
+        "name": "YearSeparated",
+        "type": "integer"
+      },
+      {
+        "name": "WorldWarII",
+        "type": "integer"
+      },
+      {
+        "name": "KoreanWar",
+        "type": "integer"
+      },
+      {
+        "name": "VietnamWar",
+        "type": "integer"
+      },
+      {
+        "name": "DesertStorm",
+        "type": "integer"
+      },
+      {
+        "name": "AfghanistanOEF",
+        "type": "integer"
+      },
+      {
+        "name": "IraqOIF",
+        "type": "integer"
+      },
+      {
+        "name": "IraqOND",
+        "type": "integer"
+      },
+      {
+        "name": "OtherTheater",
+        "type": "integer"
+      },
+      {
+        "name": "MilitaryBranch",
+        "type": "integer"
+      },
+      {
+        "name": "DischargeStatus",
+        "type": "integer"
       },
       {
         "name": "DateCreated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateUpdated",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "UserID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "DateDeleted",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ExportID",
-        "type": "INTEGER"
+        "type": "integer"
       }
     ],
-    "rowCount": 26
+    "rowCount": 4146
+  },
+  {
+    "name": "Enrollment",
+    "columns": [
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "EntryDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "HouseholdID",
+        "type": "text"
+      },
+      {
+        "name": "RelationshipToHoH",
+        "type": "integer"
+      },
+      {
+        "name": "EnrollmentCoC",
+        "type": "text"
+      },
+      {
+        "name": "LivingSituation",
+        "type": "integer"
+      },
+      {
+        "name": "RentalSubsidyType",
+        "type": "integer"
+      },
+      {
+        "name": "LengthOfStay",
+        "type": "integer"
+      },
+      {
+        "name": "LOSUnderThreshold",
+        "type": "integer"
+      },
+      {
+        "name": "PreviousStreetESSH",
+        "type": "integer"
+      },
+      {
+        "name": "DateToStreetESSH",
+        "type": "timestamp"
+      },
+      {
+        "name": "TimesHomelessPastThreeYears",
+        "type": "integer"
+      },
+      {
+        "name": "MonthsHomelessPastThreeYears",
+        "type": "integer"
+      },
+      {
+        "name": "DisablingCondition",
+        "type": "integer"
+      },
+      {
+        "name": "DateOfEngagement",
+        "type": "timestamp"
+      },
+      {
+        "name": "MoveInDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateOfPATHStatus",
+        "type": "timestamp"
+      },
+      {
+        "name": "ClientEnrolledInPATH",
+        "type": "integer"
+      },
+      {
+        "name": "ReasonNotEnrolled",
+        "type": "integer"
+      },
+      {
+        "name": "PercentAMI",
+        "type": "integer"
+      },
+      {
+        "name": "ReferralSource",
+        "type": "integer"
+      },
+      {
+        "name": "CountOutreachReferralApproaches",
+        "type": "integer"
+      },
+      {
+        "name": "DateOfBCPStatus",
+        "type": "timestamp"
+      },
+      {
+        "name": "EligibleForRHY",
+        "type": "integer"
+      },
+      {
+        "name": "ReasonNoServices",
+        "type": "integer"
+      },
+      {
+        "name": "RunawayYouth",
+        "type": "integer"
+      },
+      {
+        "name": "SexualOrientation",
+        "type": "integer"
+      },
+      {
+        "name": "SexualOrientationOther",
+        "type": "text"
+      },
+      {
+        "name": "FormerWardChildWelfare",
+        "type": "integer"
+      },
+      {
+        "name": "ChildWelfareYears",
+        "type": "integer"
+      },
+      {
+        "name": "ChildWelfareMonths",
+        "type": "integer"
+      },
+      {
+        "name": "FormerWardJuvenileJustice",
+        "type": "integer"
+      },
+      {
+        "name": "JuvenileJusticeYears",
+        "type": "integer"
+      },
+      {
+        "name": "JuvenileJusticeMonths",
+        "type": "integer"
+      },
+      {
+        "name": "UnemploymentFam",
+        "type": "integer"
+      },
+      {
+        "name": "MentalHealthDisorderFam",
+        "type": "integer"
+      },
+      {
+        "name": "PhysicalDisabilityFam",
+        "type": "integer"
+      },
+      {
+        "name": "AlcoholDrugUseDisorderFam",
+        "type": "integer"
+      },
+      {
+        "name": "InsufficientIncome",
+        "type": "integer"
+      },
+      {
+        "name": "IncarceratedParent",
+        "type": "integer"
+      },
+      {
+        "name": "VAMCStation",
+        "type": "text"
+      },
+      {
+        "name": "TargetScreenReqd",
+        "type": "integer"
+      },
+      {
+        "name": "TimeToHousingLoss",
+        "type": "integer"
+      },
+      {
+        "name": "AnnualPercentAMI",
+        "type": "integer"
+      },
+      {
+        "name": "LiteralHomelessHistory",
+        "type": "integer"
+      },
+      {
+        "name": "ClientLeaseholder",
+        "type": "integer"
+      },
+      {
+        "name": "HOHLeaseholder",
+        "type": "integer"
+      },
+      {
+        "name": "SubsidyAtRisk",
+        "type": "integer"
+      },
+      {
+        "name": "EvictionHistory",
+        "type": "integer"
+      },
+      {
+        "name": "CriminalRecord",
+        "type": "integer"
+      },
+      {
+        "name": "IncarceratedAdult",
+        "type": "integer"
+      },
+      {
+        "name": "PrisonDischarge",
+        "type": "integer"
+      },
+      {
+        "name": "SexOffender",
+        "type": "integer"
+      },
+      {
+        "name": "DisabledHoH",
+        "type": "integer"
+      },
+      {
+        "name": "CurrentPregnant",
+        "type": "integer"
+      },
+      {
+        "name": "SingleParent",
+        "type": "integer"
+      },
+      {
+        "name": "DependentUnder6",
+        "type": "integer"
+      },
+      {
+        "name": "HH5Plus",
+        "type": "integer"
+      },
+      {
+        "name": "CoCPrioritized",
+        "type": "integer"
+      },
+      {
+        "name": "HPScreeningScore",
+        "type": "integer"
+      },
+      {
+        "name": "ThresholdScore",
+        "type": "integer"
+      },
+      {
+        "name": "TranslationNeeded",
+        "type": "integer"
+      },
+      {
+        "name": "PreferredLanguage",
+        "type": "integer"
+      },
+      {
+        "name": "PreferredLanguageDifferent",
+        "type": "text"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 4771
+  },
+  {
+    "name": "Assessment",
+    "columns": [
+      {
+        "name": "AssessmentID",
+        "type": "integer"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "AssessmentDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "AssessmentLocation",
+        "type": "integer"
+      },
+      {
+        "name": "AssessmentType",
+        "type": "integer"
+      },
+      {
+        "name": "AssessmentLevel",
+        "type": "integer"
+      },
+      {
+        "name": "PrioritizationStatus",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 78
+  },
+  {
+    "name": "Event",
+    "columns": [
+      {
+        "name": "EventID",
+        "type": "integer"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "EventDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "Event",
+        "type": "integer"
+      },
+      {
+        "name": "ProbSolDivRRResult",
+        "type": "integer"
+      },
+      {
+        "name": "ReferralCaseManageAfter",
+        "type": "integer"
+      },
+      {
+        "name": "LocationCrisisOrPHHousing",
+        "type": "text"
+      },
+      {
+        "name": "ReferralResult",
+        "type": "integer"
+      },
+      {
+        "name": "ResultDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 168
+  },
+  {
+    "name": "Exit",
+    "columns": [
+      {
+        "name": "ExitID",
+        "type": "integer"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "ExitDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "Destination",
+        "type": "integer"
+      },
+      {
+        "name": "DestinationSubsidyType",
+        "type": "integer"
+      },
+      {
+        "name": "OtherDestination",
+        "type": "text"
+      },
+      {
+        "name": "HousingAssessment",
+        "type": "integer"
+      },
+      {
+        "name": "SubsidyInformation",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectCompletionStatus",
+        "type": "integer"
+      },
+      {
+        "name": "EarlyExitReason",
+        "type": "integer"
+      },
+      {
+        "name": "ExchangeForSex",
+        "type": "integer"
+      },
+      {
+        "name": "ExchangeForSexPastThreeMonths",
+        "type": "integer"
+      },
+      {
+        "name": "CountOfExchangeForSex",
+        "type": "integer"
+      },
+      {
+        "name": "AskedOrForcedToExchangeForSex",
+        "type": "integer"
+      },
+      {
+        "name": "AskedOrForcedToExchangeForSexPastThreeMonths",
+        "type": "integer"
+      },
+      {
+        "name": "WorkplaceViolenceThreats",
+        "type": "integer"
+      },
+      {
+        "name": "WorkplacePromiseDifference",
+        "type": "integer"
+      },
+      {
+        "name": "CoercedToContinueWork",
+        "type": "text"
+      },
+      {
+        "name": "LaborExploitPastThreeMonths",
+        "type": "text"
+      },
+      {
+        "name": "CounselingReceived",
+        "type": "integer"
+      },
+      {
+        "name": "IndividualCounseling",
+        "type": "integer"
+      },
+      {
+        "name": "FamilyCounseling",
+        "type": "integer"
+      },
+      {
+        "name": "GroupCounseling",
+        "type": "integer"
+      },
+      {
+        "name": "SessionCountAtExit",
+        "type": "integer"
+      },
+      {
+        "name": "PostExitCounselingPlan",
+        "type": "integer"
+      },
+      {
+        "name": "SessionsInPlan",
+        "type": "integer"
+      },
+      {
+        "name": "DestinationSafeClient",
+        "type": "integer"
+      },
+      {
+        "name": "DestinationSafeWorker",
+        "type": "integer"
+      },
+      {
+        "name": "PosAdultConnections",
+        "type": "integer"
+      },
+      {
+        "name": "PosPeerConnections",
+        "type": "integer"
+      },
+      {
+        "name": "PosCommunityConnections",
+        "type": "integer"
+      },
+      {
+        "name": "AftercareDate",
+        "type": "text"
+      },
+      {
+        "name": "AftercareProvided",
+        "type": "text"
+      },
+      {
+        "name": "EmailSocialMedia",
+        "type": "text"
+      },
+      {
+        "name": "Telephone",
+        "type": "text"
+      },
+      {
+        "name": "InPersonIndividual",
+        "type": "text"
+      },
+      {
+        "name": "InPersonGroup",
+        "type": "text"
+      },
+      {
+        "name": "CMExitReason",
+        "type": "text"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 4295
   },
   {
     "name": "Services",
     "columns": [
       {
         "name": "ServicesID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "EnrollmentID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "PersonalID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "DateProvided",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "RecordType",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "TypeProvided",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "OtherTypeProvided",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "MovingOnOtherType",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "SubTypeProvided",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "FAAmount",
-        "type": "REAL"
+        "type": "numeric"
       },
       {
         "name": "FAStartDate",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "FAEndDate",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "ReferralOutcome",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "DateCreated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateUpdated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "UserID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "DateDeleted",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ExportID",
-        "type": "INTEGER"
+        "type": "integer"
       }
     ],
     "rowCount": 4472
+  },
+  {
+    "name": "HealthAndDV",
+    "columns": [
+      {
+        "name": "HealthAndDVID",
+        "type": "text"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "InformationDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DomesticViolenceSurvivor",
+        "type": "integer"
+      },
+      {
+        "name": "WhenOccurred",
+        "type": "integer"
+      },
+      {
+        "name": "CurrentlyFleeing",
+        "type": "integer"
+      },
+      {
+        "name": "GeneralHealthStatus",
+        "type": "integer"
+      },
+      {
+        "name": "DentalHealthStatus",
+        "type": "integer"
+      },
+      {
+        "name": "MentalHealthStatus",
+        "type": "integer"
+      },
+      {
+        "name": "PregnancyStatus",
+        "type": "integer"
+      },
+      {
+        "name": "DueDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DataCollectionStage",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 9623
+  },
+  {
+    "name": "IncomeBenefits",
+    "columns": [
+      {
+        "name": "IncomeBenefitsID",
+        "type": "text"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "InformationDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "IncomeFromAnySource",
+        "type": "integer"
+      },
+      {
+        "name": "TotalMonthlyIncome",
+        "type": "numeric"
+      },
+      {
+        "name": "Earned",
+        "type": "integer"
+      },
+      {
+        "name": "EarnedAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "Unemployment",
+        "type": "integer"
+      },
+      {
+        "name": "UnemploymentAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "SSI",
+        "type": "integer"
+      },
+      {
+        "name": "SSIAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "SSDI",
+        "type": "integer"
+      },
+      {
+        "name": "SSDIAmount",
+        "type": "integer"
+      },
+      {
+        "name": "VADisabilityService",
+        "type": "integer"
+      },
+      {
+        "name": "VADisabilityServiceAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "VADisabilityNonService",
+        "type": "integer"
+      },
+      {
+        "name": "VADisabilityNonServiceAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "PrivateDisability",
+        "type": "integer"
+      },
+      {
+        "name": "PrivateDisabilityAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "WorkersComp",
+        "type": "integer"
+      },
+      {
+        "name": "WorkersCompAmount",
+        "type": "integer"
+      },
+      {
+        "name": "TANF",
+        "type": "integer"
+      },
+      {
+        "name": "TANFAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "GA",
+        "type": "integer"
+      },
+      {
+        "name": "GAAmount",
+        "type": "integer"
+      },
+      {
+        "name": "SocSecRetirement",
+        "type": "integer"
+      },
+      {
+        "name": "SocSecRetirementAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "Pension",
+        "type": "integer"
+      },
+      {
+        "name": "PensionAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "ChildSupport",
+        "type": "integer"
+      },
+      {
+        "name": "ChildSupportAmount",
+        "type": "numeric"
+      },
+      {
+        "name": "Alimony",
+        "type": "integer"
+      },
+      {
+        "name": "AlimonyAmount",
+        "type": "integer"
+      },
+      {
+        "name": "OtherIncomeSource",
+        "type": "integer"
+      },
+      {
+        "name": "OtherIncomeAmount",
+        "type": "integer"
+      },
+      {
+        "name": "OtherIncomeSourceIdentify",
+        "type": "text"
+      },
+      {
+        "name": "BenefitsFromAnySource",
+        "type": "integer"
+      },
+      {
+        "name": "SNAP",
+        "type": "integer"
+      },
+      {
+        "name": "WIC",
+        "type": "integer"
+      },
+      {
+        "name": "TANFChildCare",
+        "type": "integer"
+      },
+      {
+        "name": "TANFTransportation",
+        "type": "integer"
+      },
+      {
+        "name": "OtherTANF",
+        "type": "integer"
+      },
+      {
+        "name": "OtherBenefitsSource",
+        "type": "integer"
+      },
+      {
+        "name": "OtherBenefitsSourceIdentify",
+        "type": "text"
+      },
+      {
+        "name": "InsuranceFromAnySource",
+        "type": "integer"
+      },
+      {
+        "name": "Medicaid",
+        "type": "integer"
+      },
+      {
+        "name": "NoMedicaidReason",
+        "type": "integer"
+      },
+      {
+        "name": "Medicare",
+        "type": "integer"
+      },
+      {
+        "name": "NoMedicareReason",
+        "type": "integer"
+      },
+      {
+        "name": "SCHIP",
+        "type": "integer"
+      },
+      {
+        "name": "NoSCHIPReason",
+        "type": "integer"
+      },
+      {
+        "name": "VHAServices",
+        "type": "integer"
+      },
+      {
+        "name": "NoVHAReason",
+        "type": "integer"
+      },
+      {
+        "name": "EmployerProvided",
+        "type": "integer"
+      },
+      {
+        "name": "NoEmployerProvidedReason",
+        "type": "integer"
+      },
+      {
+        "name": "COBRA",
+        "type": "integer"
+      },
+      {
+        "name": "NoCOBRAReason",
+        "type": "integer"
+      },
+      {
+        "name": "PrivatePay",
+        "type": "integer"
+      },
+      {
+        "name": "NoPrivatePayReason",
+        "type": "integer"
+      },
+      {
+        "name": "StateHealthIns",
+        "type": "integer"
+      },
+      {
+        "name": "NoStateHealthInsReason",
+        "type": "integer"
+      },
+      {
+        "name": "IndianHealthServices",
+        "type": "integer"
+      },
+      {
+        "name": "NoIndianHealthServicesReason",
+        "type": "integer"
+      },
+      {
+        "name": "OtherInsurance",
+        "type": "integer"
+      },
+      {
+        "name": "OtherInsuranceIdentify",
+        "type": "text"
+      },
+      {
+        "name": "ADAP",
+        "type": "text"
+      },
+      {
+        "name": "NoADAPReason",
+        "type": "text"
+      },
+      {
+        "name": "RyanWhiteMedDent",
+        "type": "text"
+      },
+      {
+        "name": "NoRyanWhiteReason",
+        "type": "text"
+      },
+      {
+        "name": "ConnectionWithSOAR",
+        "type": "integer"
+      },
+      {
+        "name": "DataCollectionStage",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 9623
+  },
+  {
+    "name": "EmploymentEducation",
+    "columns": [
+      {
+        "name": "EmploymentEducationID",
+        "type": "text"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "InformationDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "LastGradeCompleted",
+        "type": "integer"
+      },
+      {
+        "name": "SchoolStatus",
+        "type": "integer"
+      },
+      {
+        "name": "Employed",
+        "type": "integer"
+      },
+      {
+        "name": "EmploymentType",
+        "type": "integer"
+      },
+      {
+        "name": "NotEmployedReason",
+        "type": "integer"
+      },
+      {
+        "name": "DataCollectionStage",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 9623
+  },
+  {
+    "name": "CurrentLivingSituation",
+    "columns": [
+      {
+        "name": "CurrentLivingSitID",
+        "type": "integer"
+      },
+      {
+        "name": "EnrollmentID",
+        "type": "integer"
+      },
+      {
+        "name": "PersonalID",
+        "type": "integer"
+      },
+      {
+        "name": "InformationDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "CurrentLivingSituation",
+        "type": "integer"
+      },
+      {
+        "name": "CLSSubsidyType",
+        "type": "text"
+      },
+      {
+        "name": "VerifiedBy",
+        "type": "text"
+      },
+      {
+        "name": "LeaveSituation14Days",
+        "type": "integer"
+      },
+      {
+        "name": "SubsequentResidence",
+        "type": "integer"
+      },
+      {
+        "name": "ResourcesToObtain",
+        "type": "integer"
+      },
+      {
+        "name": "LeaseOwn60Day",
+        "type": "integer"
+      },
+      {
+        "name": "MovedTwoOrMore",
+        "type": "integer"
+      },
+      {
+        "name": "LocationDetails",
+        "type": "text"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 336
+  },
+  {
+    "name": "ProjectCoC",
+    "columns": [
+      {
+        "name": "ProjectCoCID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "CoCCode",
+        "type": "text"
+      },
+      {
+        "name": "Geocode",
+        "type": "integer"
+      },
+      {
+        "name": "Address1",
+        "type": "text"
+      },
+      {
+        "name": "Address2",
+        "type": "text"
+      },
+      {
+        "name": "City",
+        "type": "text"
+      },
+      {
+        "name": "State",
+        "type": "text"
+      },
+      {
+        "name": "ZIP",
+        "type": "integer"
+      },
+      {
+        "name": "GeographyType",
+        "type": "integer"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 26
+  },
+  {
+    "name": "Inventory",
+    "columns": [
+      {
+        "name": "InventoryID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "CoCCode",
+        "type": "text"
+      },
+      {
+        "name": "HouseholdType",
+        "type": "integer"
+      },
+      {
+        "name": "Availability",
+        "type": "integer"
+      },
+      {
+        "name": "UnitInventory",
+        "type": "integer"
+      },
+      {
+        "name": "BedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "CHVetBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "YouthVetBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "VetBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "CHYouthBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "YouthBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "CHBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "OtherBedInventory",
+        "type": "integer"
+      },
+      {
+        "name": "ESBedType",
+        "type": "integer"
+      },
+      {
+        "name": "InventoryStartDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "InventoryEndDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 81
+  },
+  {
+    "name": "HMISParticipation",
+    "columns": [
+      {
+        "name": "HMISParticipationID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "HMISParticipationType",
+        "type": "integer"
+      },
+      {
+        "name": "HMISParticipationStatusStartDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "HMISParticipationStatusEndDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 26
+  },
+  {
+    "name": "Funder",
+    "columns": [
+      {
+        "name": "FunderID",
+        "type": "integer"
+      },
+      {
+        "name": "ProjectID",
+        "type": "integer"
+      },
+      {
+        "name": "Funder",
+        "type": "integer"
+      },
+      {
+        "name": "OtherFunder",
+        "type": "text"
+      },
+      {
+        "name": "GrantID",
+        "type": "text"
+      },
+      {
+        "name": "StartDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "EndDate",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateCreated",
+        "type": "timestamp"
+      },
+      {
+        "name": "DateUpdated",
+        "type": "timestamp"
+      },
+      {
+        "name": "UserID",
+        "type": "integer"
+      },
+      {
+        "name": "DateDeleted",
+        "type": "text"
+      },
+      {
+        "name": "ExportID",
+        "type": "integer"
+      }
+    ],
+    "rowCount": 59
   },
   {
     "name": "User",
     "columns": [
       {
         "name": "UserID",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "UserFirstName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "UserLastName",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "UserPhone",
-        "type": "INTEGER"
+        "type": "integer"
       },
       {
         "name": "UserExtension",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "UserEmail",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "DateCreated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateUpdated",
-        "type": "TEXT"
+        "type": "timestamp"
       },
       {
         "name": "DateDeleted",
-        "type": "TEXT"
+        "type": "text"
       },
       {
         "name": "ExportID",
-        "type": "INTEGER"
+        "type": "integer"
       }
     ],
     "rowCount": 1
-  },
-  {
-    "name": "YouthEducationStatus",
-    "columns": [
-      {
-        "name": "YouthEducationStatusID",
-        "type": "TEXT"
-      },
-      {
-        "name": "EnrollmentID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "PersonalID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "InformationDate",
-        "type": "TEXT"
-      },
-      {
-        "name": "CurrentSchoolAttend",
-        "type": "TEXT"
-      },
-      {
-        "name": "MostRecentEdStatus",
-        "type": "TEXT"
-      },
-      {
-        "name": "CurrentEdStatus",
-        "type": "TEXT"
-      },
-      {
-        "name": "DataCollectionStage",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateCreated",
-        "type": "TEXT"
-      },
-      {
-        "name": "DateUpdated",
-        "type": "TEXT"
-      },
-      {
-        "name": "UserID",
-        "type": "INTEGER"
-      },
-      {
-        "name": "DateDeleted",
-        "type": "TEXT"
-      },
-      {
-        "name": "ExportID",
-        "type": "INTEGER"
-      }
-    ],
-    "rowCount": 5637
   }
 ]

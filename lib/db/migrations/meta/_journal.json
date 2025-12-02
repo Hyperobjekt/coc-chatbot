@@ -57,6 +57,34 @@
       "when": 1757362773211,
       "tag": "0007_flowery_ben_parker",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1764672091497,
+      "tag": "0008_strange_toad_men",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1764673699564,
+      "tag": "0009_old_daredevil",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1764674614842,
+      "tag": "0010_vengeful_gateway",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1764675749767,
+      "tag": "0011_fixed_nehzno",
+      "breakpoints": true
     }
   ]
 }

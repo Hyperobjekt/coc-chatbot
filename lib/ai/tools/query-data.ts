@@ -1,13 +1,24 @@
-import Database from 'better-sqlite3';
+import { config } from "dotenv";
+import { drizzle } from "drizzle-orm/postgres-js";
 import path from 'path';
 import fs from 'fs';
+import postgres from "postgres";
+
+config({
+  path: ".env.local",
+});
 
 // Load schema and documentation once at startup
 const schema = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'schema.json'), 'utf-8'));
 const documentation = fs.readFileSync(path.join(process.cwd(), 'documentation.txt'), 'utf-8');
 
 // Initialize database connection
-const db = new Database(path.join(process.cwd(), 'data.db'));
+if (!process.env.POSTGRES_URL) {
+  throw new Error("POSTGRES_URL is not defined");
+}
+
+const connection = postgres(process.env.POSTGRES_URL);
+const db = drizzle(connection);
 
 interface QueryDataParams {
   sql: string;
@@ -17,7 +28,7 @@ interface QueryDataParams {
 export async function queryData({ sql, explanation }: QueryDataParams) {
   try {
     // Execute the query
-    const results = db.prepare(sql).all() as Record<string, unknown>[];
+    const results = await connection.unsafe(sql) as Record<string, unknown>[];
     
     // Format results for display
     const formattedResults = {
@@ -47,6 +58,6 @@ export function getContext() {
 }
 
 // Clean up database connection on process exit
-process.on('exit', () => {
-  db.close();
+process.on('exit', async () => {
+  await connection.end();
 });
