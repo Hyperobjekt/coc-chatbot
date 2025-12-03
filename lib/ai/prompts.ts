@@ -5,6 +5,10 @@ import { getCustomPrompt } from "./custom-prompt";
 import { regularPrompt } from "./regular-prompt";
 
 // Load our enhanced documentation files
+const hmisDoc = fs.readFileSync(
+  path.join(process.cwd(), "documentation.txt"),
+  "utf-8"
+);
 const schemaDoc = fs.readFileSync(
   path.join(process.cwd(), "database/schema.md"),
   "utf-8"
@@ -18,17 +22,11 @@ const commonQueriesDoc = fs.readFileSync(
   "utf-8"
 );
 
-
 export type RequestHints = {
   latitude: Geo["latitude"];
   longitude: Geo["longitude"];
   city: Geo["city"];
   country: Geo["country"];
-};
-
-export type DatabaseContext = {
-  schema: any;
-  documentation: string;
 };
 
 export const getRequestPromptFromHints = (requestHints: RequestHints) => `\
@@ -41,32 +39,32 @@ About the origin of user's request:
 
 export const systemPrompt = async ({
   requestHints,
-  databaseContext,
 }: {
   selectedChatModel: string;
   requestHints: RequestHints;
-  databaseContext?: DatabaseContext;
 }) => {
   const [customPrompt, requestPrompt] = await Promise.all([
     getCustomPrompt(),
-    Promise.resolve(getRequestPromptFromHints(requestHints))
+    Promise.resolve(getRequestPromptFromHints(requestHints)),
   ]);
 
   let prompt = `${customPrompt ?? regularPrompt}\n\n${requestPrompt}`;
 
-  if (databaseContext) {
-    prompt += "\n\n# HMIS Database Documentation\n\n";
+  prompt += "\n\n# HMIS Documentation\n\n";
 
-    // Add schema documentation
-    prompt += `## Schema Overview\n${schemaDoc}\n\n`;
+  // Add general HMIS documentation
+  prompt += `## General HMIS Understanding\n${hmisDoc}\n\n`;
 
-    // Add lookup tables
-    prompt += `## Lookup Tables & Code Mappings\n${lookupTablesDoc}\n\n`;
+  // Add schema documentation
+  prompt += `## Schema Overview\n${schemaDoc}\n\n`;
 
-    // Add example queries
-    prompt += `## Query Examples\n${commonQueriesDoc}\n\n`;
+  // Add lookup tables
+  prompt += `## Lookup Tables & Code Mappings\n${lookupTablesDoc}\n\n`;
 
-    prompt += `Use the queryData function to execute PostgreSQL queries on this database. Always explain what each query does.
+  // Add example queries
+  prompt += `## Query Examples\n${commonQueriesDoc}\n\n`;
+
+  prompt += `Use the queryData function to execute PostgreSQL queries on this database. Always explain what each query does.
 
 Important Query Guidelines:
 
@@ -108,7 +106,6 @@ When users ask questions, try to:
 3. Use appropriate lookup tables for coded values
 4. Follow the query patterns in the documentation
 5. Explain your query logic clearly`;
-  }
 
   return prompt;
 };

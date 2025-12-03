@@ -23,7 +23,6 @@ import type { ChatModel } from "@/lib/ai/models";
 import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { queryDataTool } from "@/lib/ai/tools/definitions";
-import { getContext, queryData } from "@/lib/ai/tools/query-data";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -181,8 +180,7 @@ export async function POST(request: Request) {
         model: myProvider.languageModel(selectedChatModel),
         system: await systemPrompt({ 
           selectedChatModel, 
-          requestHints,
-          databaseContext: getContext()
+          requestHints
         }),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
