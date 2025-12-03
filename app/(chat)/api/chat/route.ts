@@ -1,4 +1,3 @@
-import { geolocation } from "@vercel/functions";
 import {
   convertToModelMessages,
   createUIMessageStream,
@@ -20,7 +19,7 @@ import { auth, type UserType } from "@/app/(auth)/auth";
 import type { VisibilityType } from "@/components/visibility-selector";
 import { entitlementsByUserType } from "@/lib/ai/entitlements";
 import type { ChatModel } from "@/lib/ai/models";
-import { type RequestHints, systemPrompt } from "@/lib/ai/prompts";
+import { systemPrompt } from "@/lib/ai/prompts";
 import { myProvider } from "@/lib/ai/providers";
 import { queryDataTool } from "@/lib/ai/tools/definitions";
 import { isProductionEnvironment } from "@/lib/constants";
@@ -147,15 +146,6 @@ export async function POST(request: Request) {
 
     const uiMessages = [...convertToUIMessages(messagesFromDb), message];
 
-    const { longitude, latitude, city, country } = geolocation(request);
-
-    const requestHints: RequestHints = {
-      longitude,
-      latitude,
-      city,
-      country,
-    };
-
     await saveMessages({
       messages: [
         {
@@ -178,10 +168,7 @@ export async function POST(request: Request) {
       execute: async ({ writer: dataStream }) => {
         const result = await streamText({
         model: myProvider.languageModel(selectedChatModel),
-        system: await systemPrompt({ 
-          selectedChatModel, 
-          requestHints
-        }),
+        system: systemPrompt(),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
           experimental_activeTools:
