@@ -73,6 +73,134 @@ References HUD Four Categories of the Homeless Definition.
 
 -- 2 of 2 --
 
+========== Self-Resolution and Rapid Resolution Identification Guide ==========
+
+Here's how to identify individuals meeting these criteria:
+
+Self-Resolution 
+Definition: Unduplicated count of individuals with positive exit destinations without an entry in any project with a PH project type.
+Identification Logic:
+# Pseudocode for identifying Self-Resolution individuals
+
+SELECT DISTINCT client_id
+FROM Exit e
+JOIN Enrollment enr ON e.enrollment_id = enr.enrollment_id
+JOIN Project p ON enr.project_id = p.project_id
+WHERE 
+    # Has positive exit destination
+    e.destination IN (
+        3,   # Permanent housing (other than RRH)
+        10,  # Rental by client (VASH subsidy)
+        11,  # Owned by client (VASH subsidy)
+        19,  # Rental by client (other subsidy)
+        20,  # Rental by client (no subsidy)
+        21,  # Owned by client (no subsidy)
+        22,  # Staying with family (permanent)
+        23,  # Staying with friends (permanent)
+        26,  # Moved from one HOPWA-funded project to PH
+        28   # Residential project with ongoing housing subsidy
+    )
+    # Has NO enrollments in Permanent Housing projects
+    AND client_id NOT IN (
+        SELECT DISTINCT client_id
+        FROM Enrollment e2
+        JOIN Project p2 ON e2.project_id = p2.project_id
+        WHERE p2.project_type IN (3, 9, 10, 13)  
+        # PH types: PSH=3, RRH=9, Safe Haven=10, PH-Housing Only=13
+    )
+Key Data Requirements:
+Exit.csv: Destination field
+Enrollment.csv: Link enrollments to clients
+Project.csv: ProjectType field to exclude PH projects
+Business Meaning:
+These are individuals who achieved housing stability on their own without formal permanent housing assistance—a key diversion success indicator.
+
+Rapid Resolution 
+Definition: Unduplicated count of individuals with 3 or fewer service transactions per project exit, with no project stay longer than 60 days, with 3 or fewer total project entries in any project.
+Identification Logic:
+# Pseudocode for identifying Rapid Resolution individuals
+
+# Step 1: Calculate metrics per client
+WITH client_metrics AS (
+    SELECT 
+        c.client_id,
+        COUNT(DISTINCT e.enrollment_id) as total_enrollments,
+        MAX(DATEDIFF(COALESCE(ex.exit_date, CURRENT_DATE), 
+                     e.entry_date)) as max_stay_days
+    FROM Client c
+    JOIN Enrollment e ON c.client_id = e.client_id
+    LEFT JOIN Exit ex ON e.enrollment_id = ex.enrollment_id
+    GROUP BY c.client_id
+),
+
+# Step 2: Count service transactions per enrollment
+service_counts AS (
+    SELECT 
+        e.enrollment_id,
+        e.client_id,
+        COUNT(s.services_id) as service_transactions
+    FROM Enrollment e
+    LEFT JOIN Services s ON e.enrollment_id = s.enrollment_id
+    GROUP BY e.enrollment_id, e.client_id
+)
+
+# Step 3: Apply all three criteria
+SELECT DISTINCT cm.client_id
+FROM client_metrics cm
+JOIN service_counts sc ON cm.client_id = sc.client_id
+WHERE 
+    cm.total_enrollments <= 3           # Criterion 3: 3 or fewer project entries
+    AND cm.max_stay_days <= 60          # Criterion 2: No stay > 60 days
+    AND sc.service_transactions <= 3    # Criterion 1: 3 or fewer services per exit
+Key Data Requirements:
+Enrollment.csv: EntryDate, ClientID, EnrollmentID
+Exit.csv: ExitDate (to calculate length of stay)
+Services.csv: Count of service records per enrollment
+Client.csv: For deduplication
+Business Meaning:
+These are "light-touch" successes—individuals who resolved their homelessness quickly with minimal system interaction, indicating either strong natural supports or effective rapid resolution interventions.
+Combined SQL Example:
+-- Self-Resolution
+CREATE VIEW self_resolution AS
+SELECT DISTINCT c.client_id, c.first_name, c.last_name
+FROM Client c
+JOIN Enrollment e ON c.client_id = e.client_id
+JOIN Exit ex ON e.enrollment_id = ex.enrollment_id
+WHERE ex.destination IN (3,10,11,19,20,21,22,23,26,28)
+  AND c.client_id NOT IN (
+      SELECT DISTINCT e2.client_id 
+      FROM Enrollment e2
+      JOIN Project p ON e2.project_id = p.project_id
+      WHERE p.project_type IN (3,9,10,13)
+  );
+
+-- Rapid Resolution
+CREATE VIEW rapid_resolution AS
+SELECT DISTINCT c.client_id
+FROM Client c
+WHERE 
+  -- 3 or fewer total enrollments
+  (SELECT COUNT(*) FROM Enrollment WHERE client_id = c.client_id) <= 3
+  -- No stay longer than 60 days
+  AND NOT EXISTS (
+      SELECT 1 FROM Enrollment e 
+      LEFT JOIN Exit ex ON e.enrollment_id = ex.enrollment_id
+      WHERE e.client_id = c.client_id
+        AND DATEDIFF(COALESCE(ex.exit_date, CURRENT_DATE), e.entry_date) > 60
+  )
+  -- 3 or fewer services per enrollment
+  AND NOT EXISTS (
+      SELECT 1 FROM Enrollment e
+      WHERE e.client_id = c.client_id
+      HAVING (SELECT COUNT(*) FROM Services WHERE enrollment_id = e.enrollment_id) > 3
+  );
+Critical Notes for Data Scientists:
+"Per project exit" in Rapid Resolution means you need to evaluate service counts for EACH enrollment separately, not aggregate across all enrollments
+Positive exit destinations follow HUD data standards—verify the exact destination codes in your HMIS implementation
+Active enrollments (no exit date) should use CURRENT_DATE for stay calculations
+Deduplication is critical—these are client-level metrics, not enrollment-level
+Project Types - PH includes: PSH (3), RRH (9), Safe Haven (10), PH-Housing Only (13)
+
 
 
 ========== HMIS-Data-Standards-Manual-2024.pdf ==========
