@@ -3,10 +3,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { regularPrompt } from "@/lib/ai/prompts";
 import { toast } from "./toast";
 
-export function PromptSettings() {
+type PromptSettingsProps = {
+  defaultPrompt: string;
+};
+
+export function PromptSettings({ defaultPrompt }: PromptSettingsProps) {
   const [customPrompt, setCustomPrompt] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -82,7 +85,7 @@ export function PromptSettings() {
           id="customPrompt"
           onChange={(e) => setCustomPrompt(e.target.value)}
           placeholder="Enter your custom prompt..."
-          value={customPrompt ?? regularPrompt}
+          value={customPrompt ?? defaultPrompt}
         />
       </div>
 
@@ -107,7 +110,7 @@ export function PromptSettings() {
             the AI assistant. It will be automatically enhanced with:
           </p>
           <ul className="list-inside list-disc space-y-1">
-            <li>Geographic context (user&apos;s location)</li>
+            <li>General HMIS documentation</li>
             <li>Database schema documentation</li>
             <li>Lookup tables reference</li>
             <li>Example queries</li>

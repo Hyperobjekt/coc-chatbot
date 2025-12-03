@@ -4,7 +4,7 @@ export const SettingsIcon = ({ size = 16 }: { size?: number }) => {
       height={size}
       strokeLinejoin="round"
       style={{ color: "currentcolor" }}
-      viewBox="0 0 16 16"
+      viewBox="-0.5 1 17 17"
       width={size}
     >
       <path
