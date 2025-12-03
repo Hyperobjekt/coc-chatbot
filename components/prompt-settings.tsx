@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { regularPrompt } from "@/lib/ai/regular-prompt";
+import { regularPrompt } from "@/lib/ai/prompts";
 import { toast } from "./toast";
 
 export function PromptSettings() {

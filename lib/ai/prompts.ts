@@ -27,6 +27,9 @@ export const systemPrompt = () => {
   ].join('\n\n');
 };
 
+// Base system prompt for the UI component
+export const regularPrompt = docs.systemPrompt;
+
 export const titlePrompt = docs.titleGeneration;
 
 // Stub prompts for artifacts (not currently used)
