@@ -19,13 +19,13 @@
 
 **Identification Logic**:
 ```sql
-SELECT DISTINCT client_id
-FROM Exit e
-JOIN Enrollment enr ON e.enrollment_id = enr.enrollment_id
-JOIN Project p ON enr.project_id = p.project_id
+SELECT DISTINCT e."PersonalID"
+FROM "Exit" e
+JOIN "Enrollment" enr ON e."EnrollmentID" = enr."EnrollmentID"
+JOIN "Project" p ON enr."ProjectID" = p."ProjectID"
 WHERE 
     -- Has positive exit destination
-    e.destination IN (
+    e."Destination" IN (
         3,   -- Permanent housing (other than RRH)
         10,  -- Rental by client (VASH subsidy)
         11,  -- Owned by client (VASH subsidy)
@@ -38,11 +38,11 @@ WHERE
         28   -- Residential project with ongoing housing subsidy
     )
     -- Has NO enrollments in Permanent Housing projects
-    AND client_id NOT IN (
-        SELECT DISTINCT client_id
-        FROM Enrollment e2
-        JOIN Project p2 ON e2.project_id = p2.project_id
-        WHERE p2.project_type IN (3, 9, 10, 13)  
+    AND e."PersonalID" NOT IN (
+        SELECT DISTINCT e2."PersonalID"
+        FROM "Enrollment" e2
+        JOIN "Project" p2 ON e2."ProjectID" = p2."ProjectID"
+        WHERE p2."ProjectType" IN (3, 9, 10, 13)  
         -- PH types: PSH=3, RRH=9, Safe Haven=10, PH-Housing Only=13
     )
 ```
@@ -55,31 +55,35 @@ WHERE
 -- Step 1: Calculate metrics per client
 WITH client_metrics AS (
     SELECT 
-        c.client_id,
-        COUNT(DISTINCT e.enrollment_id) as total_enrollments,
-        MAX(DATEDIFF(COALESCE(ex.exit_date, CURRENT_DATE), 
-                     e.entry_date)) as max_stay_days
-    FROM Client c
-    JOIN Enrollment e ON c.client_id = e.client_id
-    LEFT JOIN Exit ex ON e.enrollment_id = ex.enrollment_id
-    GROUP BY c.client_id
+        c."PersonalID",
+        COUNT(DISTINCT e."EnrollmentID") as total_enrollments,
+        MAX(EXTRACT(EPOCH FROM (COALESCE(ex."ExitDate", CURRENT_DATE)::timestamp - 
+                               e."EntryDate"::timestamp))/86400) as max_stay_days
+    FROM "Client" c
+    JOIN "Enrollment" e ON c."PersonalID" = e."PersonalID"
+    LEFT JOIN "Exit" ex ON e."EnrollmentID" = ex."EnrollmentID"
+    WHERE e."DateDeleted" IS NULL 
+    AND (ex."DateDeleted" IS NULL OR ex."DateDeleted" IS NOT NULL)
+    GROUP BY c."PersonalID"
 ),
 
 -- Step 2: Count service transactions per enrollment
 service_counts AS (
     SELECT 
-        e.enrollment_id,
-        e.client_id,
-        COUNT(s.services_id) as service_transactions
-    FROM Enrollment e
-    LEFT JOIN Services s ON e.enrollment_id = s.enrollment_id
-    GROUP BY e.enrollment_id, e.client_id
+        e."EnrollmentID",
+        e."PersonalID",
+        COUNT(s."ServicesID") as service_transactions
+    FROM "Enrollment" e
+    LEFT JOIN "Services" s ON e."EnrollmentID" = s."EnrollmentID"
+    WHERE e."DateDeleted" IS NULL
+    AND (s."DateDeleted" IS NULL OR s."DateDeleted" IS NOT NULL)
+    GROUP BY e."EnrollmentID", e."PersonalID"
 )
 
 -- Step 3: Apply all three criteria
-SELECT DISTINCT cm.client_id
+SELECT DISTINCT cm."PersonalID"
 FROM client_metrics cm
-JOIN service_counts sc ON cm.client_id = sc.client_id
+JOIN service_counts sc ON cm."PersonalID" = sc."PersonalID"
 WHERE 
     cm.total_enrollments <= 3           -- Criterion 3: 3 or fewer project entries
     AND cm.max_stay_days <= 60          -- Criterion 2: No stay > 60 days
