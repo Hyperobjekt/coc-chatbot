@@ -167,17 +167,14 @@ export async function POST(request: Request) {
     const stream = createUIMessageStream({
       execute: async ({ writer: dataStream }) => {
         const result = await streamText({
-        model: myProvider.languageModel(selectedChatModel),
-        system: systemPrompt(),
+          model: myProvider.languageModel(selectedChatModel),
+          system: systemPrompt(),
           messages: convertToModelMessages(uiMessages),
           stopWhen: stepCountIs(5),
-          experimental_activeTools:
-            selectedChatModel === "chat-model-reasoning"
-              ? []
-              : ["queryData"],
+          experimental_activeTools: ["queryData"], // All models get tools
           experimental_transform: smoothStream({ chunking: "word" }),
           tools: {
-            queryData: queryDataTool
+            queryData: queryDataTool,
           },
           experimental_telemetry: {
             isEnabled: isProductionEnvironment,
@@ -253,16 +250,6 @@ export async function POST(request: Request) {
         return "Oops, an error occurred!";
       },
     });
-
-    // const streamContext = getStreamContext();
-
-    // if (streamContext) {
-    //   return new Response(
-    //     await streamContext.resumableStream(streamId, () =>
-    //       stream.pipeThrough(new JsonToSseTransformStream())
-    //     )
-    //   );
-    // }
 
     return new Response(stream.pipeThrough(new JsonToSseTransformStream()));
   } catch (error) {
