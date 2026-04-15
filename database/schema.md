@@ -14,6 +14,144 @@ This database implements the HUD HMIS Data Standards for tracking homeless servi
   - 4,472 Services
   - 9,623 Income/Benefits Records
 
+## Table Relationships
+```
+Export (metadata)
+  ↓ ExportID
+    ↓ Organization
+      ↓ OrganizationID
+        ↓ Project
+          ↓ ProjectID
+            ↓ Enrollment ← Client (PersonalID)
+               ↓ EnrollmentID
+                 ├→ Exit
+                 ├→ Services
+                 ├→ Assessment
+                 ├→ Event
+                 ├→ HealthAndDV
+                 ├→ IncomeBenefits
+                 └→ EmploymentEducation
+```
+
+## Core System Tables
+
+### Export (System Metadata)
+**Primary Key:** ExportID (integer)
+**Description:** Tracks metadata about data exports from the system
+**Key Fields:**
+- ExportID (integer, PK): Unique export identifier
+- ExportDate (timestamp): When export was created
+- ExportStartDate (timestamp): Start of export period
+- ExportEndDate (timestamp): End of export period
+- SoftwareName (text): Name of HMIS software
+- SourceID (text): Source system identifier
+- SourceName (text): Source system name
+- ExportPeriodType (integer): Type of export period
+- HashStatus (integer): Data hashing status
+
+### Organization
+**Primary Key:** OrganizationID (integer)
+**Description:** Organizations providing homeless services
+**Key Fields:**
+- OrganizationID (integer, PK): Unique organization identifier
+- OrganizationName (text): Official organization name
+- VictimServiceProvider (integer): 0=No, 1=Yes
+- DateCreated (timestamp): Record creation date
+- DateUpdated (timestamp): Last update date
+- DateDeleted (text): Soft delete date if applicable
+
+### Project
+**Primary Key:** ProjectID (integer)
+**Foreign Keys:** OrganizationID → Organization.OrganizationID
+**Description:** Individual projects/programs run by organizations
+**Key Fields:**
+- ProjectID (integer, PK): Unique project identifier
+- OrganizationID (integer, FK): Operating organization
+- ProjectName (text): Project name
+- ProjectType (integer): Type code (see Project Types)
+- ContinuumProject (integer): 0=No, 1=Yes
+- OperatingStartDate (timestamp): Project start date
+- OperatingEndDate (timestamp): Project end date if closed
+- HousingType (integer): Housing type code
+- RRHSubType (integer): RRH subtype if applicable
+- TargetPopulation (integer): Target population code
+
+### HMISParticipation
+**Primary Key:** HMISParticipationID (integer)
+**Foreign Keys:** ProjectID → Project.ProjectID
+**Description:** Tracks project participation in HMIS
+**Key Fields:**
+- HMISParticipationID (integer, PK): Unique identifier
+- ProjectID (integer, FK): Associated project
+- HMISParticipationType (integer): Type of participation
+- HMISParticipationStatusStartDate (timestamp): Start of status
+- HMISParticipationStatusEndDate (timestamp): End of status
+
+### CEParticipation
+**Primary Key:** CEParticipationID (integer)
+**Foreign Keys:** ProjectID → Project.ProjectID
+**Description:** Coordinated Entry participation details
+**Key Fields:**
+- CEParticipationID (integer, PK): Unique identifier
+- ProjectID (integer, FK): Associated project
+- AccessPoint (integer): 0=No, 1=Yes
+- PreventionAssessment (integer): 0=No, 1=Yes
+- CrisisAssessment (integer): 0=No, 1=Yes
+- HousingAssessment (integer): 0=No, 1=Yes
+- ReceivesReferrals (integer): 0=No, 1=Yes
+
+### ProjectCoC
+**Primary Key:** ProjectCoCID (integer)
+**Foreign Keys:** ProjectID → Project.ProjectID
+**Description:** Project geographic and CoC information
+**Key Fields:**
+- ProjectCoCID (integer, PK): Unique identifier
+- ProjectID (integer, FK): Associated project
+- CoCCode (text): HUD CoC code
+- Geocode (integer): Geographic code
+- Address1 (text): Street address
+- City (text): City name
+- State (text): State abbreviation
+- ZIP (integer): ZIP code
+- GeographyType (integer): Urban/Suburban/Rural code
+
+### Inventory
+**Primary Key:** InventoryID (integer)
+**Foreign Keys:** ProjectID → Project.ProjectID
+**Description:** Bed and unit inventory for residential projects
+**Key Fields:**
+- InventoryID (integer, PK): Unique identifier
+- ProjectID (integer, FK): Associated project
+- CoCCode (text): HUD CoC code
+- HouseholdType (integer): Household type code
+- UnitInventory (integer): Number of units
+- BedInventory (integer): Number of beds
+- InventoryStartDate (timestamp): Start of inventory record
+- InventoryEndDate (timestamp): End of inventory record
+
+### Funder
+**Primary Key:** FunderID (integer)
+**Foreign Keys:** ProjectID → Project.ProjectID
+**Description:** Project funding sources
+**Key Fields:**
+- FunderID (integer, PK): Unique identifier
+- ProjectID (integer, FK): Associated project
+- Funder (integer): Funding source code
+- GrantID (text): Grant identifier
+- StartDate (timestamp): Start of funding
+- EndDate (timestamp): End of funding
+
+### User
+**Primary Key:** UserID (integer)
+**Description:** System users
+**Key Fields:**
+- UserID (integer, PK): Unique user identifier
+- UserFirstName (text): First name
+- UserLastName (text): Last name
+- UserEmail (text): Email address
+- DateCreated (timestamp): Account creation date
+- DateDeleted (text): Account deletion date if applicable
+
 ## Core Tables
 
 ### Client (Demographics)
@@ -85,6 +223,96 @@ This database implements the HUD HMIS Data Standards for tracking homeless servi
 - TotalMonthlyIncome (numeric): Total monthly income
 - Various income indicators (integer): 0=No, 1=Yes
 - Various income amounts (numeric): Monthly amounts
+
+### Assessment
+**Primary Key:** AssessmentID (integer)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Records client assessments and results
+**Key Fields:**
+- AssessmentID (integer, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- AssessmentDate (timestamp): When assessment occurred
+- AssessmentLocation (integer): Where assessment occurred
+- AssessmentType (integer): Type of assessment
+- AssessmentLevel (integer): Crisis/Housing needs level
+- PrioritizationStatus (integer): Prioritization result
+
+### Event
+**Primary Key:** EventID (integer)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Tracks coordinated entry and other events
+**Key Fields:**
+- EventID (integer, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- EventDate (timestamp): When event occurred
+- Event (integer): Type of event
+- ReferralResult (integer): Outcome if referral event
+- ResultDate (timestamp): When result determined
+
+### HealthAndDV
+**Primary Key:** HealthAndDVID (text)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Health and domestic violence information
+**Key Fields:**
+- HealthAndDVID (text, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- InformationDate (timestamp): Date collected
+- DomesticViolenceSurvivor (integer): 0=No, 1=Yes
+- CurrentlyFleeing (integer): 0=No, 1=Yes
+- GeneralHealthStatus (integer): Health status code
+- PregnancyStatus (integer): 0=No, 1=Yes
+- DueDate (timestamp): Expected due date if pregnant
+
+### EmploymentEducation
+**Primary Key:** EmploymentEducationID (text)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Employment and education status
+**Key Fields:**
+- EmploymentEducationID (text, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- InformationDate (timestamp): Date collected
+- LastGradeCompleted (integer): Education level code
+- SchoolStatus (integer): Current school status
+- Employed (integer): 0=No, 1=Yes
+- EmploymentType (integer): Type of employment
+- NotEmployedReason (integer): Reason if unemployed
+
+### CurrentLivingSituation
+**Primary Key:** CurrentLivingSitID (integer)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Tracks changes in living situation
+**Key Fields:**
+- CurrentLivingSitID (integer, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- InformationDate (timestamp): Date collected
+- CurrentLivingSituation (integer): Living situation code
+- LeaveSituation14Days (integer): At risk of losing in 14 days
+- SubsequentResidence (integer): Has other housing identified
+- LocationDetails (text): Additional location details
+
+### YouthEducationStatus
+**Primary Key:** YouthEducationStatusID (text)
+**Foreign Keys:**
+- EnrollmentID → Enrollment.EnrollmentID
+- PersonalID → Client.PersonalID
+**Description:** Education status for youth programs
+**Key Fields:**
+- YouthEducationStatusID (text, PK): Unique identifier
+- EnrollmentID (integer, FK): Links to Enrollment
+- InformationDate (timestamp): Date collected
+- CurrentSchoolAttend (text): Current attendance status
+- MostRecentEdStatus (text): Most recent education status
+- CurrentEdStatus (text): Current education status
 
 ## Lookup Tables & Common Codes
 

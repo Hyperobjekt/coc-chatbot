@@ -33,38 +33,57 @@ Not Reported    | 21
 
 ### 2. Age Distribution at Project Entry
 ```sql
-SELECT 
-  CASE 
-    WHEN age < 18 THEN 'Under 18'
-    WHEN age BETWEEN 18 AND 24 THEN '18-24'
-    WHEN age BETWEEN 25 AND 34 THEN '25-34'
-    WHEN age BETWEEN 35 AND 44 THEN '35-44'
-    WHEN age BETWEEN 45 AND 54 THEN '45-54'
-    WHEN age BETWEEN 55 AND 61 THEN '55-61'
-    WHEN age >= 62 THEN '62 and older'
-    ELSE 'Unknown'
-  END as age_group,
-  COUNT(*) as client_count
-FROM (
+WITH client_ages AS (
   SELECT 
-    EXTRACT(YEAR FROM AGE(e."EntryDate"::date, c."DOB"::date)) as age
+    EXTRACT(YEAR FROM AGE(CURRENT_DATE::date, c."DOB"::date)) as age
   FROM "Client" c
   JOIN "Enrollment" e ON c."PersonalID" = e."PersonalID"
   WHERE c."DateDeleted" IS NULL 
     AND e."DateDeleted" IS NULL
-) sub
-GROUP BY 1
+),
+age_groups AS (
+  SELECT 
+    CASE 
+      WHEN age < 18 THEN 'Under 18' 
+      WHEN age BETWEEN 18 AND 24 THEN '18-24' 
+      WHEN age BETWEEN 25 AND 34 THEN '25-34' 
+      WHEN age BETWEEN 35 AND 44 THEN '35-44' 
+      WHEN age BETWEEN 45 AND 54 THEN '45-54' 
+      WHEN age BETWEEN 55 AND 61 THEN '55-61' 
+      WHEN age >= 62 THEN '62 and older' 
+      ELSE 'Unknown' 
+    END as age_group,
+    COUNT(*) as client_count 
+  FROM client_ages
+  GROUP BY 1
+)
+SELECT 
+  age_group,
+  client_count
+FROM age_groups
 ORDER BY 
   CASE age_group
-    WHEN 'Under 18' THEN 1
-    WHEN '18-24' THEN 2
-    WHEN '25-34' THEN 3
-    WHEN '35-44' THEN 4
-    WHEN '45-54' THEN 5
-    WHEN '55-61' THEN 6
-    WHEN '62 and older' THEN 7
-    ELSE 8
+    WHEN 'Under 18' THEN 1 
+    WHEN '18-24' THEN 2 
+    WHEN '25-34' THEN 3 
+    WHEN '35-44' THEN 4 
+    WHEN '45-54' THEN 5 
+    WHEN '55-61' THEN 6 
+    WHEN '62 and older' THEN 7 
+    ELSE 8 
   END;
+```
+**Sample Result:**
+```
+age_group     | client_count
+--------------|-------------
+Under 18      | 523
+18-24         | 892
+25-34         | 1245
+35-44         | 756
+45-54         | 423
+55-61         | 189
+62 and older  | 118
 ```
 
 ## Project Performance

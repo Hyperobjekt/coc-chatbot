@@ -1,21 +1,9 @@
 import { config } from "dotenv";
-import { drizzle } from "drizzle-orm/postgres-js";
-import fs from "fs";
-import path from "path";
 import postgres from "postgres";
 
 config({
   path: ".env.local",
 });
-
-// Load schema and documentation once at startup
-const schema = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "schema.json"), "utf-8")
-);
-const documentation = fs.readFileSync(
-  path.join(process.cwd(), "documentation.txt"),
-  "utf-8"
-);
 
 // Initialize database connection
 if (!process.env.POSTGRES_URL) {
@@ -23,12 +11,11 @@ if (!process.env.POSTGRES_URL) {
 }
 
 const connection = postgres(process.env.POSTGRES_URL);
-const db = drizzle(connection);
 
-interface QueryDataParams {
+type QueryDataParams = {
   sql: string;
   explanation?: string;
-}
+};
 
 export async function queryData({ sql, explanation }: QueryDataParams) {
   try {
@@ -69,14 +56,6 @@ export async function queryData({ sql, explanation }: QueryDataParams) {
     }
     throw new Error("Query failed: Unknown error");
   }
-}
-
-// Helper to get schema and documentation for system prompt
-export function getContext() {
-  return {
-    schema,
-    documentation,
-  };
 }
 
 // Clean up database connection on process exit
